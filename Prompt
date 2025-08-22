@@ -1,0 +1,46 @@
+# 📌 Prompt for AI Web Builder
+
+**Create a professional, fast, multilingual (Hindi + English + Kannada) website for:**
+**“Shree – Jyotish evam Karmkand Karyalay”**
+
+### 🌍 General Requirements
+
+* Lightweight, responsive design (HTML + CSS + JS frontend, Node.js backend).
+* Color theme: saffron, yellow, red, white.
+* Typography: Indian cultural font (e.g. Noto Serif Devanagari).
+* Optimized images (`.webp`, lazy loading).
+* Secure, stealth **Admin Panel** (hidden from visitors, protected by secure key ).
+* Centralized database SQLite with realtime sync 
+
+---
+
+### 👤 Visitor Features
+
+* Switch language (HI | EN | KN) via JSON-based content.
+* View **Home Page**: hero with ma durga image logo pandit ji’s photo, tagline, call-to-action (Book Consultation, Join Newsletter).
+* View **Services**: service cards extract service data with drive link. https://docs.google.com/document/d/1Hj83ESABEcr2Vbz-FkKKUETH4Lmw2HLic_5UgJ1fqn4/edit?usp=drivesdk
+* services images folder link download crop and embed proply with name link https://drive.google.com/drive/folders/1QumYy4F5M2mUQN7X2eqfOTHV5qgEHGjo
+* View **Gallery**: grid of optimized images, lightbox zoom.
+* View **Blog**: posts (daily horoscope, puja methods, events).
+* Join **Newsletter**: subscribe with email → stored in DB, optional welcome email.
+* Fill **Contact Form**: (Name, Phone, Email, Service, Message) → saved in DB.
+* Quick links + social icons in footer (WhatsApp, Phone, Email).
+* Access office info:
+  Address: “#18, 1st Main Road, Opp. Anjanadri Hallow Bricks, Goreguntapalya, Bangalore – 560022”
+  Phones: +918766453937, +919343775709
+  WhatsApp chat link
+  Email: [info@domain.com](mailto:info@domain.com)
+
+---
+
+### 🔧 Admin Panel Features (Stealth Only)
+
+* Hidden route (not visible to visitors, no sitemap, noindex).
+* Login with secure key.
+* Dashboard counters: total visitors, subscribers, messages, blog posts.
+* Daily weakly monthly analytics: visitors, device type, page views.
+* Manage Contact Messages (view/export CSV).
+* Manage Subscribers (view/export CSV, send newsletters).
+* Manage Gallery (upload images + captions).
+* Manage Blog Posts (add/edit/delete, Markdown support).
+* Manage Settings (site title, meta description, contact info, social links).
