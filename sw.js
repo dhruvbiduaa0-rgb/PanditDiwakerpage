@@ -1,5 +1,5 @@
 /* Service Worker for ServiceCo */
-const SW_VERSION = 'v1.0.0';
+const SW_VERSION = 'v1.1.0';
 const PRECACHE = `serviceco-precache-${SW_VERSION}`;
 const RUNTIME = `serviceco-runtime-${SW_VERSION}`;
 
@@ -10,12 +10,9 @@ const PRECACHE_URLS = [
   './script.js',
   './offline.html',
   './manifest.webmanifest',
-  './images/web-design.svg',
-  './images/seo.svg',
-  './images/cloud-hosting.svg',
-  './images/analytics.svg',
-  './images/support.svg',
-  './images/ecommerce.svg',
+  './content/services.hi.json',
+  './content/services.en.json',
+  './content/services.kn.json',
   './images/icon-192.svg',
   './images/icon-512.svg'
 ];
@@ -40,7 +37,6 @@ self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Only handle same-origin requests
   if (url.origin !== self.location.origin) return;
 
   // HTML navigation requests: network-first with offline fallback
@@ -53,6 +49,21 @@ self.addEventListener('fetch', event => {
       }).catch(async () => {
         const cached = await caches.match(request);
         return cached || caches.match('./offline.html');
+      })
+    );
+    return;
+  }
+
+  // JSON/content: stale-while-revalidate
+  if (request.destination === '' && request.headers.get('accept')?.includes('application/json') || url.pathname.endsWith('.json')) {
+    event.respondWith(
+      caches.open(RUNTIME).then(async cache => {
+        const cached = await cache.match(request);
+        const networkPromise = fetch(request).then(response => {
+          cache.put(request, response.clone());
+          return response;
+        }).catch(() => undefined);
+        return cached || networkPromise || fetch(request);
       })
     );
     return;

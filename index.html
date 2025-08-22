@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2563eb">
-  <meta name="description" content="ServiceCo - Professional web services with offline support and fast caching.">
-  <title>ServiceCo — Web Services</title>
+  <meta name="theme-color" content="#d97706">
+  <meta name="description" content="Shree – Jyotish evam Karmkand Karyalay — पूजा एवं कर्मकांड सेवाएं">
+  <title>Shree – Jyotish evam Karmkand Karyalay</title>
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./images/icon-192.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -19,37 +22,83 @@
 
   <header class="site-header">
     <div class="container">
-      <h1 class="brand">ServiceCo</h1>
+      <h1 class="brand">Shree – Jyotish evam Karmkand Karyalay</h1>
       <nav class="nav">
-        <a href="#services">Services</a>
-        <a href="#cart">Cart</a>
-        <a href="./docs/CONTENT.md" target="_blank" rel="noopener">Docs</a>
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+        <a href="#blog" data-i18n="nav_blog">Blog</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <select id="lang-select" aria-label="Language">
+          <option value="hi">हिंदी</option>
+          <option value="en" selected>English</option>
+          <option value="kn">ಕನ್ನಡ</option>
+        </select>
       </nav>
     </div>
   </header>
 
-  <main class="container layout">
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h2 data-i18n="hero_title">Authentic Vedic Rituals & Astrology</h2>
+        <p data-i18n="hero_sub">Book consultations, puja, and karmkand services with trusted pandit ji.</p>
+        <div class="cta">
+          <a href="#contact" class="btn btn-primary" data-i18n="cta_book">Book Consultation</a>
+          <a href="#newsletter" class="btn btn-secondary" data-i18n="cta_news">Join Newsletter</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="./images/hero-durga.webp" alt="Durga Mata" width="384" height="384" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <main class="container main">
     <section id="services" class="services">
-      <h2>Our Services</h2>
+      <h2 data-i18n="services_heading">Our Services</h2>
       <div id="service-grid" class="service-grid"></div>
     </section>
 
-    <aside id="cart" class="cart">
-      <h2>Your Cart</h2>
-      <ul id="cart-items" class="cart-items"></ul>
-      <div class="cart-footer">
-        <span id="cart-total" class="cart-total">Total: $0.00</span>
-        <div class="cart-actions">
-          <button id="checkout-button" type="button" class="btn btn-primary">Checkout</button>
-          <button id="clear-cart-button" type="button" class="btn btn-secondary">Clear Cart</button>
-        </div>
+    <section id="gallery" class="gallery">
+      <h2 data-i18n="gallery_heading">Gallery</h2>
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </section>
+
+    <section id="blog" class="blog">
+      <h2 data-i18n="blog_heading">Blog</h2>
+      <div id="blog-list" class="blog-list"></div>
+    </section>
+
+    <section id="newsletter" class="newsletter">
+      <h2 data-i18n="news_heading">Newsletter</h2>
+      <form id="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="Email" required>
+        <button type="submit" class="btn btn-primary" data-i18n="news_subscribe">Subscribe</button>
+      </form>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 data-i18n="contact_heading">Contact</h2>
+      <form id="contact-form">
+        <input type="text" id="contact-name" placeholder="Name" required>
+        <input type="tel" id="contact-phone" placeholder="Phone" required>
+        <input type="email" id="contact-email" placeholder="Email" required>
+        <input type="text" id="contact-service" placeholder="Service">
+        <textarea id="contact-message" placeholder="Message"></textarea>
+        <button type="submit" class="btn btn-primary" data-i18n="contact_send">Send</button>
+      </form>
+      <div class="contact-info">
+        <p><strong>Address:</strong> #18, 1st Main Road, Opp. Anjanadri Hallow Bricks, Goreguntapalya, Bangalore – 560022</p>
+        <p><strong>Phone:</strong> +918766453937, +919343775709</p>
+        <p><strong>Email:</strong> info@domain.com</p>
+        <p><a href="https://wa.me/918766453937" target="_blank" rel="noopener">WhatsApp</a></p>
       </div>
-    </aside>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> ServiceCo. All rights reserved.</small>
+      <small>© <span id="year"></span> Shree – Jyotish evam Karmkand Karyalay.</small>
     </div>
   </footer>
 
