@@ -12,6 +12,8 @@ class VedicServicesApp {
         this.setupServiceNavigation();
         this.setupSmoothScrolling();
         this.setupContactButtons();
+        this.setupReadMoreButtons();
+        this.setupScrollAnimations();
     }
 
     // Initialize language system
@@ -79,6 +81,42 @@ class VedicServicesApp {
                 });
             }
         });
+    }
+
+    // Setup read more buttons specifically
+    setupReadMoreButtons() {
+        const readMoreButtons = document.querySelectorAll('.read-more-btn');
+        readMoreButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const serviceId = button.getAttribute('data-service');
+                if (serviceId) {
+                    this.showServiceDetails(serviceId);
+                }
+            });
+        });
+    }
+
+    // Setup contact buttons
+    setupContactButtons() {
+        const contactButtons = document.querySelectorAll('.contact-btn');
+        contactButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.scrollToContact();
+            });
+        });
+    }
+
+    // Scroll to contact section
+    scrollToContact() {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     }
 
     // Get service ID from title
@@ -255,18 +293,28 @@ class VedicServicesApp {
         });
     }
 
-    // Setup contact buttons
-    setupContactButtons() {
-        document.querySelectorAll('button').forEach(button => {
-            if (button.textContent.includes('Contact') || button.textContent.includes('संपर्क')) {
-                button.addEventListener('click', function() {
-                    const contactSection = document.querySelector('.bg-amber-100');
-                    if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' });
+    // Setup scroll animations
+    setupScrollAnimations() {
+        // Intersection Observer for scroll animations
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
                     }
                 });
-            }
-        });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.service-card, .ritual-category, .contact-card, .service-overview-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
     }
 
     // Set language
@@ -298,11 +346,26 @@ class VedicServicesApp {
             }
         });
     }
+
+    // Add floating animation to elements
+    addFloatingAnimation() {
+        const floatingElements = document.querySelectorAll('.expertise-icon, .contact-icon');
+        floatingElements.forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.2}s`;
+        });
+    }
 }
 
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.vedicApp = new VedicServicesApp();
+    
+    // Add floating animations after a short delay
+    setTimeout(() => {
+        if (window.vedicApp) {
+            window.vedicApp.addFloatingAnimation();
+        }
+    }, 1000);
 });
 
 // Export for use in other modules

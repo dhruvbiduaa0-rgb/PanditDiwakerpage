@@ -32,6 +32,34 @@ const i18n = {
             }
         },
 
+        // Pandit Information
+        pandit: {
+            name: {
+                hindi: 'पं. दिवाकरमणि त्रिपाठी शास्त्री',
+                english: 'Pt. Diwakarmani Tripathi Shastri'
+            },
+            title: {
+                hindi: 'वैदिक ज्योतिष एवं कर्मकांड विशेषज्ञ',
+                english: 'Vedic Astrology & Ritual Expert'
+            }
+        },
+
+        // Expertise
+        expertise: {
+            vedic: {
+                hindi: 'वैदिक विशेषज्ञ',
+                english: 'Vedic Expert'
+            },
+            astrology: {
+                hindi: 'ज्योतिष विशेषज्ञ',
+                english: 'Astrology Expert'
+            },
+            rituals: {
+                hindi: 'कर्मकांड विशेषज्ञ',
+                english: 'Ritual Expert'
+            }
+        },
+
         // Main Content
         main: {
             title: {
@@ -53,6 +81,38 @@ const i18n = {
             description: {
                 hindi: 'सभी प्रकार के धार्मिक अनुष्ठान वैदिक परंपराओं के अनुसार किए जाते हैं:',
                 english: 'All types of religious rituals are performed according to Vedic traditions:'
+            }
+        },
+
+        // Services Overview
+        services: {
+            marriage: {
+                title: {
+                    hindi: 'विवाह संस्कार:',
+                    english: 'Marriage Ceremonies:'
+                },
+                desc: {
+                    hindi: 'पूर्ण वैदिक विवाह अनुष्ठान और प्रक्रियाएं',
+                    english: 'Complete Vedic wedding rituals and procedures'
+                }
+            },
+            religious: {
+                title: {
+                    hindi: 'धार्मिक पाठन:',
+                    english: 'Religious Recitations:'
+                }
+            },
+            devotional: {
+                title: {
+                    hindi: 'भक्तिपूर्ण कार्यक्रम:',
+                    english: 'Devotional Programs:'
+                }
+            },
+            astrology: {
+                title: {
+                    hindi: 'ज्योतिष सेवाएं:',
+                    english: 'Astrology Services:'
+                }
             }
         },
 
@@ -136,7 +196,7 @@ const i18n = {
                     english: '1. Major Deity Worship & Festivals'
                 },
                 description: {
-                    hindi: 'ये पूजा विशिष्ट देवताओं को समर्पित हैं और अक्सर प्रमुख त्योहारों के दौरान की जाती हैं। इनका उद्देश्य दैवीय आशीर्वाद प्राप्त करना, कृतज्ञता व्यक्त करना और जीवन में शुभता आमंत्रित करना है।',
+                    hindi: 'ये पूजाएं विशिष्ट देवी-देवताओं को समर्पित हैं और अक्सर प्रमुख त्योहारों के दौरान की जाती हैं। इनका उद्देश्य दैवीय आशीर्वाद प्राप्त करना, कृतज्ञता व्यक्त करना और जीवन में शुभता का आह्वान करना है।',
                     english: 'These worships are dedicated to specific deities and are often performed during major festivals. Their purpose is to receive divine blessings, express gratitude, and invoke auspiciousness in life.'
                 }
             },
@@ -156,7 +216,7 @@ const i18n = {
                     english: '3. Sixteen Sanskaras (Life-cycle Rituals)'
                 },
                 description: {
-                    hindi: 'ये सोलह अनुष्ठान हैं जो व्यक्ति के जीवन में महत्वपूर्ण मील के पत्थरों पर किए जाते हैं, जन्म से पहले से मृत्यु के बाद तक। इनका उद्देश्य व्यक्ति को शारीरिक, मानसिक और आध्यात्मिक रूप से परिष्कृत करना है।',
+                    hindi: 'ये सोलह अनुष्ठान हैं जो व्यक्ति के जीवन में महत्वपूर्ण मील के पत्थरों पर किए जाते हैं, जन्म से पूर्व से लेकर मृत्यु के बाद तक। इनका उद्देश्य व्यक्ति को शारीरिक, मानसिक और आध्यात्मिक रूप से परिष्कृत करना है।',
                     english: 'These are sixteen rituals performed at important milestones in a person\'s life, from before birth to after death. Their purpose is to refine a person physically, mentally, and spiritually.'
                 }
             },
@@ -166,17 +226,33 @@ const i18n = {
                     english: '4. Astrological Rituals (Remedial Worship)'
                 },
                 description: {
-                    hindi: 'वैदिक ज्योतिष के अनुसार, ग्रहों की स्थिति व्यक्ति के जीवन को प्रभावित करती है। प्रतिकूल ग्रहीय प्रभावों को शांत करने और उनके लाभकारी प्रभावों को बढ़ाने के लिए ज्योतिषीय अनुष्ठान किए जाते हैं।',
+                    hindi: 'वैदिक ज्योतिष के अनुसार, ग्रहों की स्थिति व्यक्ति के जीवन को प्रभावित करती है। ज्योतिषीय अनुष्ठान ग्रहों के प्रतिकूल प्रभावों को शांत करने और उनके शुभ प्रभावों को बढ़ाने के लिए किए जाते हैं।',
                     english: 'According to Vedic astrology, planetary positions affect a person\'s life. Astrological rituals are performed to pacify adverse planetary influences and enhance their beneficial effects.'
                 }
             }
         },
 
-        // Contact Information
+        // Contact Section
         contact: {
-            title: {
-                hindi: 'संपर्क जानकारी',
-                english: 'Contact Information'
+            'section-title': {
+                hindi: 'संपर्क करें',
+                english: 'Contact Us'
+            },
+            'mobile-title': {
+                hindi: 'मोबाइल',
+                english: 'Mobile'
+            },
+            'whatsapp-title': {
+                hindi: 'व्हाट्सएप',
+                english: 'WhatsApp'
+            },
+            'address-title': {
+                hindi: 'पता',
+                english: 'Address'
+            },
+            'timing-title': {
+                hindi: 'कार्य समय',
+                english: 'Working Hours'
             },
             mobile: {
                 hindi: 'मोबाइल',
@@ -193,6 +269,14 @@ const i18n = {
             landmark: {
                 hindi: 'लैंडमार्क',
                 english: 'Landmark'
+            }
+        },
+
+        // About Section
+        about: {
+            title: {
+                hindi: 'हमारे बारे में',
+                english: 'About Us'
             }
         },
 
