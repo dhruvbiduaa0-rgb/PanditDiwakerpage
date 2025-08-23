@@ -338,23 +338,38 @@ const i18n = {
 
     // Update all content based on current language
     updateContent() {
-        Object.keys(this.translations).forEach(section => {
-            Object.keys(this.translations[section]).forEach(key => {
-                const translation = this.translations[section][key];
-                if (typeof translation === 'object' && translation[this.currentLanguage]) {
-                    // Handle nested translations
-                    if (typeof translation[this.currentLanguage] === 'object') {
-                        Object.keys(translation[this.currentLanguage]).forEach(subKey => {
-                            const subTranslation = translation[this.currentLanguage][subKey];
-                            this.updateElementContent(`${section}-${key}-${subKey}`, subTranslation);
-                        });
-                    } else {
-                        // Handle direct translations
-                        this.updateElementContent(`${section}-${key}`, translation[this.currentLanguage]);
-                    }
+        // Update all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = this.getTranslation(key);
+            if (translation) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = translation;
+                } else {
+                    element.textContent = translation;
                 }
-            });
+            }
         });
+    },
+
+    // Get translation for a specific key
+    getTranslation(key) {
+        const keys = key.split('.');
+        let translation = this.translations;
+        
+        for (const k of keys) {
+            if (translation && translation[k]) {
+                translation = translation[k];
+            } else {
+                return null;
+            }
+        }
+        
+        if (translation && translation[this.currentLanguage]) {
+            return translation[this.currentLanguage];
+        }
+        
+        return null;
     },
 
     // Update specific element content
