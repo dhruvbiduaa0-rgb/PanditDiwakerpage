@@ -336,7 +336,7 @@ body.lang-english {
     border: 2px solid transparent;
     position: relative;
     overflow: hidden;
-    min-height: 500px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -493,7 +493,7 @@ body.lang-english {
 
 .service-description {
     color: var(--text-secondary);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     line-height: 1.6;
     position: relative;
     z-index: 2;
@@ -504,11 +504,49 @@ body.lang-english {
     color: var(--text-primary);
     font-weight: 500;
     font-size: 0.95rem;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-style: italic;
     position: relative;
     z-index: 2;
     line-height: 1.5;
+}
+
+/* Service Details Section */
+.service-details {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+    position: relative;
+    z-index: 2;
+}
+
+.service-details .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.service-details .detail-item:last-child {
+    border-bottom: none;
+}
+
+.service-details .detail-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.service-details .detail-value {
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: right;
 }
 
 .service-actions {
@@ -1110,6 +1148,20 @@ body.lang-english {
     .service-card img {
         height: 180px;
     }
+    
+    .service-details {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .service-details .detail-item {
+        padding: 6px 0;
+    }
+    
+    .service-details .detail-label,
+    .service-details .detail-value {
+        font-size: 0.85rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1137,6 +1189,26 @@ body.lang-english {
     
     .service-description {
         font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .service-short-desc {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+    
+    .service-details {
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+    
+    .service-details .detail-item {
+        padding: 5px 0;
+    }
+    
+    .service-details .detail-label,
+    .service-details .detail-value {
+        font-size: 0.8rem;
     }
     
     .service-actions {
@@ -1158,6 +1230,10 @@ body.lang-english {
     
     .service-card {
         padding: 12px;
+    }
+    
+    .service-details {
+        padding: 8px;
     }
 }
 
