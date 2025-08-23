@@ -11,6 +11,7 @@ class VedicRitualsApp {
         this.setupEventListeners();
         this.addScrollAnimations();
         this.addFloatingAnimation();
+        this.setupImageErrorHandling();
     }
 
     initializeLanguage() {
@@ -96,6 +97,50 @@ class VedicRitualsApp {
             if (e.key === 'Escape' && this.currentService) {
                 this.goBack();
             }
+        });
+    }
+
+    setupImageErrorHandling() {
+        // Handle image loading errors for service images
+        const serviceImages = document.querySelectorAll('.service-card img, .service-overview-card img, .muhurat-service-card img');
+        
+        serviceImages.forEach(img => {
+            img.addEventListener('error', (e) => {
+                console.warn('Image failed to load:', img.src);
+                // Create a fallback placeholder
+                const fallbackDiv = document.createElement('div');
+                fallbackDiv.className = 'image-fallback';
+                fallbackDiv.innerHTML = `
+                    <div class="fallback-icon">🕉️</div>
+                    <div class="fallback-text">Service Image</div>
+                `;
+                fallbackDiv.style.cssText = `
+                    width: 100%;
+                    height: 200px;
+                    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+                    border: 1px solid #e5e7eb;
+                    border-radius: 8px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    color: #9ca3af;
+                    font-size: 0.9rem;
+                `;
+                
+                // Replace the broken image with fallback
+                img.style.display = 'none';
+                img.parentNode.insertBefore(fallbackDiv, img);
+            });
+
+            // Add loading state
+            img.addEventListener('loadstart', () => {
+                img.style.opacity = '0.7';
+            });
+
+            img.addEventListener('load', () => {
+                img.style.opacity = '1';
+            });
         });
     }
 
