@@ -1,4 +1,4 @@
-// Comprehensive Services Data with Detailed Information
+// Comprehensive Services Data with Detailed Information including Muhurat & Lagn
 const servicesData = {
     ganeshPuja: {
         id: 'ganesh-puja',
@@ -41,6 +41,14 @@ const servicesData = {
         bestTime: {
             hindi: 'गणेश चतुर्थी, मंगलवार, शुक्ल पक्ष की चतुर्थी',
             english: 'Ganesh Chaturthi, Tuesday, Shukla Paksha Chaturthi'
+        },
+        muhurat: {
+            hindi: 'प्रातः 6:00 से 10:00 बजे (सूर्योदय के बाद), मध्याह्न 12:00 से 2:00 बजे, सायं 4:00 से 6:00 बजे',
+            english: 'Morning 6:00 AM to 10:00 AM (after sunrise), Noon 12:00 PM to 2:00 PM, Evening 4:00 PM to 6:00 PM'
+        },
+        lagn: {
+            hindi: 'मेष, वृषभ, मिथुन, कर्क, सिंह, कन्या, तुला, वृश्चिक, धनु, मकर, कुंभ, मीन राशि में शुभ',
+            english: 'Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces signs are auspicious'
         },
         scientificBasis: {
             hindi: 'गणेश पूजा से मस्तिष्क में सकारात्मक ऊर्जा का प्रवाह होता है, जो तनाव कम करने और मानसिक स्पष्टता बढ़ाने में सहायक है।',
@@ -90,6 +98,14 @@ const servicesData = {
             hindi: 'दीपावली, शुक्रवार, पूर्णिमा',
             english: 'Diwali, Friday, Purnima'
         },
+        muhurat: {
+            hindi: 'सूर्यास्त के 2 घंटे बाद से मध्यरात्रि तक, विशेष रूप से पूजा मुहूर्त में',
+            english: '2 hours after sunset until midnight, especially during puja muhurat'
+        },
+        lagn: {
+            hindi: 'कर्क, सिंह, कन्या, तुला, वृश्चिक, धनु राशि में विशेष शुभ',
+            english: 'Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius signs are especially auspicious'
+        },
         scientificBasis: {
             hindi: 'दीपावली पर घरों को साफ करने और दीप जलाने से वातावरण शुद्ध होता है और सकारात्मक ऊर्जा का प्रवाह होता है।',
             english: 'Cleaning homes and lighting lamps on Diwali purifies the environment and creates positive energy flow.'
@@ -137,6 +153,14 @@ const servicesData = {
         bestTime: {
             hindi: 'पूर्णिमा, गुरुवार, शुक्ल पक्ष',
             english: 'Purnima, Thursday, Shukla Paksha'
+        },
+        muhurat: {
+            hindi: 'सूर्योदय के 2 घंटे बाद से सूर्यास्त के 2 घंटे पहले तक, विशेष रूप से मध्याह्न',
+            english: '2 hours after sunrise until 2 hours before sunset, especially at noon'
+        },
+        lagn: {
+            hindi: 'मेष, वृषभ, मिथुन, कर्क, सिंह, कन्या, तुला, वृश्चिक, धनु, मकर, कुंभ, मीन सभी राशियों में शुभ',
+            english: 'All zodiac signs are auspicious: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces'
         },
         scientificBasis: {
             hindi: 'सत्यनारायण कथा सुनने से मन में सकारात्मक विचार आते हैं और तनाव कम होता है।',
@@ -186,6 +210,14 @@ const servicesData = {
             hindi: 'विवाह मुहूर्त, शुक्ल पक्ष, शुभ नक्षत्र',
             english: 'Marriage muhurat, Shukla Paksha, auspicious nakshatra'
         },
+        muhurat: {
+            hindi: 'विवाह मुहूर्त: सूर्योदय के 3 घंटे बाद से सूर्यास्त के 3 घंटे पहले तक, विशेष रूप से मध्याह्न 12:00 से 2:00 बजे',
+            english: 'Marriage Muhurat: 3 hours after sunrise until 3 hours before sunset, especially from 12:00 PM to 2:00 PM'
+        },
+        lagn: {
+            hindi: 'मेष, वृषभ, मिथुन, कर्क, सिंह, कन्या, तुला, वृश्चिक, धनु, मकर, कुंभ, मीन राशि में शुभ, विशेष रूप से लग्न के अनुसार',
+            english: 'All zodiac signs are auspicious, especially according to the ascendant (Lagn)'
+        },
         scientificBasis: {
             hindi: 'वैदिक विवाह संस्कार से दंपति के बीच आध्यात्मिक बंधन मजबूत होता है और जीवन में स्थिरता आती है।',
             english: 'Vedic marriage ceremony strengthens the spiritual bond between couples and brings stability in life.'
@@ -233,6 +265,14 @@ const servicesData = {
         bestTime: {
             hindi: 'ग्रह दोष के अनुसार, शुभ मुहूर्त',
             english: 'According to planetary dosha, auspicious muhurat'
+        },
+        muhurat: {
+            hindi: 'ग्रह शांति मुहूर्त: सूर्योदय के 2 घंटे बाद से सूर्यास्त के 2 घंटे पहले तक, विशेष रूप से ग्रह के शुभ समय में',
+            english: 'Planetary Peace Muhurat: 2 hours after sunrise until 2 hours before sunset, especially during the planet\'s auspicious time'
+        },
+        lagn: {
+            hindi: 'सभी राशियों में शुभ, विशेष रूप से ग्रह के अनुसार निर्धारित लग्न में',
+            english: 'Auspicious in all zodiac signs, especially in the ascendant determined according to the planet'
         },
         scientificBasis: {
             hindi: 'ग्रहों की शांति से जीवन में सकारात्मक ऊर्जा का प्रवाह होता है और बाधाएं दूर होती हैं।',
@@ -282,6 +322,14 @@ const servicesData = {
             hindi: 'शुक्ल पक्ष, शुभ मुहूर्त, गुरुवार या शुक्रवार',
             english: 'Shukla Paksha, auspicious muhurat, Thursday or Friday'
         },
+        muhurat: {
+            hindi: 'गृहप्रवेश मुहूर्त: सूर्योदय के 2 घंटे बाद से सूर्यास्त के 2 घंटे पहले तक, विशेष रूप से मध्याह्न',
+            english: 'House Warming Muhurat: 2 hours after sunrise until 2 hours before sunset, especially at noon'
+        },
+        lagn: {
+            hindi: 'मेष, वृषभ, मिथुन, कर्क, सिंह, कन्या, तुला, वृश्चिक, धनु, मकर, कुंभ, मीन राशि में शुभ',
+            english: 'Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces signs are auspicious'
+        },
         scientificBasis: {
             hindi: 'वास्तु पूजा से घर का वातावरण शुद्ध होता है और सकारात्मक ऊर्जा का प्रवाह होता है।',
             english: 'Vastu puja purifies the home environment and creates positive energy flow.'
@@ -289,7 +337,7 @@ const servicesData = {
     }
 };
 
-// Service Categories with detailed information
+// Service Categories with detailed information including Muhurat & Lagn
 const serviceCategories = {
     majorDeityWorship: {
         title: {
@@ -304,6 +352,10 @@ const serviceCategories = {
             hindi: 'सनातन धर्म में पूजा, अनुष्ठान और कर्मकांड केवल धार्मिक क्रियाएं नहीं हैं, बल्कि ये जीवन जीने की एक समग्र प्रणाली का अभिन्न अंग हैं। ये प्रथाएं व्यक्ति को ब्रह्मांडीय ऊर्जाओं के साथ सामंजस्य स्थापित करने, जीवन के विभिन्न चरणों को पवित्र करने और धर्म, अर्थ, काम और मोक्ष नामक चार पुरुषार्थों को प्राप्त करने में सहायता करती हैं।',
             english: 'In Sanatan Dharma, worship, rituals and ceremonies are not just religious activities, but are an integral part of a comprehensive system of living. These practices help individuals establish harmony with cosmic energies, sanctify various stages of life and help achieve the four purusharthas called Dharma, Artha, Kama and Moksha.'
         },
+        muhuratInfo: {
+            hindi: 'प्रत्येक देवता के लिए विशिष्ट मुहूर्त और लग्न निर्धारित हैं। सूर्योदय के बाद से सूर्यास्त तक का समय विशेष रूप से शुभ माना जाता है।',
+            english: 'Specific muhurat and lagn are determined for each deity. The time from sunrise to sunset is considered especially auspicious.'
+        },
         services: ['ganeshPuja', 'lakshmiPujan', 'satyanarayanVrat']
     },
 
@@ -317,8 +369,12 @@ const serviceCategories = {
             english: 'Yajna or Havan are central to Vedic tradition, where fire is considered the mouth of the deities and offerings are made through it.'
         },
         detailedInfo: {
-            hindi: 'यज्ञ या हवन वैदिक परंपरा के केंद्र में हैं, जहाँ अग्नि को देवताओं का मुख माना जाता है और उसके माध्यम से आहुतियां अर्पित की जाती हैं। इसका उद्देश्य देवों को प्रसन्न करना, पर्यावरण को शुद्ध करना और ब्रह्मांडीय व्यवस्था बनाए रखना है।',
+            hindi: 'यज्ञ या हवन वैदिक परंपरा के केंद्र में हैं, जहाँ अग्नि को देवताओं का मुख माना जाता है और उसके माध्यम से आहुति दी जाती है। उद्देश्य देवताओं को प्रसन्न करना, वातावरण को शुद्ध करना और ब्रह्मांडीय व्यवस्था को बनाए रखना है।',
             english: 'Yajna or Havan are central to Vedic tradition, where fire is considered the mouth of the deities and offerings are made through it. The purpose is to please the deities, purify the environment and maintain cosmic order.'
+        },
+        muhuratInfo: {
+            hindi: 'अग्नि अनुष्ठान के लिए ब्रह्म मुहूर्त (सूर्योदय से 2 घंटे पहले) और अभिजित मुहूर्त (मध्याह्न) विशेष रूप से शुभ माने गए हैं।',
+            english: 'Brahma Muhurat (2 hours before sunrise) and Abhijit Muhurat (noon) are considered especially auspicious for fire rituals.'
         },
         services: ['navagrahaShanti']
     },
@@ -329,12 +385,16 @@ const serviceCategories = {
             english: 'Sixteen Sanskaras (Life-cycle Rituals)'
         },
         description: {
-            hindi: 'ये सोलह संस्कार हैं जो व्यक्ति के जीवन के महत्वपूर्ण पड़ावों पर किए जाते हैं, जन्म से पूर्व से लेकर मृत्यु के बाद तक।',
+            hindi: 'ये सोलह संस्कार हैं जो व्यक्ति के जीवन के महत्वपूर्ण मील के पत्थरों पर किए जाते हैं, जन्म से पूर्व से लेकर मृत्यु के बाद तक।',
             english: 'These are sixteen rituals performed at important milestones in a person\'s life, from before birth to after death.'
         },
         detailedInfo: {
             hindi: 'ये सोलह संस्कार हैं जो व्यक्ति के जीवन में महत्वपूर्ण मील के पत्थरों पर किए जाते हैं, जन्म से पूर्व से लेकर मृत्यु के बाद तक। इनका उद्देश्य व्यक्ति को शारीरिक, मानसिक और आध्यात्मिक रूप से परिष्कृत करना है।',
             english: 'These are sixteen rituals performed at important milestones in a person\'s life, from before birth to after death. Their purpose is to refine a person physically, mentally and spiritually.'
+        },
+        muhuratInfo: {
+            hindi: 'प्रत्येक संस्कार के लिए विशिष्ट मुहूर्त और लग्न निर्धारित हैं। जन्म कुंडली के अनुसार शुभ समय का चयन किया जाता है।',
+            english: 'Specific muhurat and lagn are determined for each sanskara. Auspicious time is selected according to the birth chart.'
         },
         services: ['marriageCeremonies']
     },
@@ -352,11 +412,59 @@ const serviceCategories = {
             hindi: 'वास्तु शास्त्र के अनुसार घर और व्यवसाय स्थल के लिए पूजा और अनुष्ठान। ये अनुष्ठान स्थान को नकारात्मक ऊर्जाओं से मुक्त करते हैं और सकारात्मक ऊर्जा का आगमन कराते हैं।',
             english: 'Puja and rituals for home and business place according to Vastu Shastra. These rituals free the place from negative energies and bring positive energy.'
         },
+        muhuratInfo: {
+            hindi: 'वास्तु अनुष्ठान के लिए शुक्ल पक्ष, गुरुवार या शुक्रवार, मध्याह्न का समय विशेष रूप से शुभ माना जाता है।',
+            english: 'Shukla Paksha, Thursday or Friday, noon time is considered especially auspicious for Vastu rituals.'
+        },
         services: ['houseWarming']
+    }
+};
+
+// Muhurat & Lagn Specialist Information
+const muhuratSpecialist = {
+    title: {
+        hindi: 'मुहूर्त एवं लग्न विशेषज्ञ',
+        english: 'Muhurat & Lagn Specialist'
+    },
+    description: {
+        hindi: 'वैदिक ज्योतिष के अनुसार सभी शुभ कार्यों के लिए उचित मुहूर्त और लग्न का निर्धारण।',
+        english: 'Determination of proper muhurat and lagn for all auspicious works according to Vedic astrology.'
+    },
+    services: {
+        muhuratCalculation: {
+            title: {
+                hindi: 'मुहूर्त गणना',
+                english: 'Muhurat Calculation'
+            },
+            description: {
+                hindi: 'जन्म कुंडली के अनुसार विवाह, गृहप्रवेश, व्यापार आरंभ, यात्रा आदि के लिए शुभ मुहूर्त का निर्धारण।',
+                english: 'Determination of auspicious muhurat for marriage, house warming, business start, travel etc. according to birth chart.'
+            }
+        },
+        lagnAnalysis: {
+            title: {
+                hindi: 'लग्न विश्लेषण',
+                english: 'Lagn Analysis'
+            },
+            description: {
+                hindi: 'जन्म समय के अनुसार लग्न का निर्धारण और उसके अनुसार शुभ समय का चयन।',
+                english: 'Determination of ascendant (Lagn) according to birth time and selection of auspicious time accordingly.'
+            }
+        },
+        panchangAnalysis: {
+            title: {
+                hindi: 'पंचांग विश्लेषण',
+                english: 'Panchang Analysis'
+            },
+            description: {
+                hindi: 'तिथि, वार, नक्षत्र, योग और करण के अनुसार शुभ मुहूर्त का निर्धारण।',
+                english: 'Determination of auspicious muhurat according to tithi, vara, nakshatra, yoga and karana.'
+            }
+        }
     }
 };
 
 // Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { servicesData, serviceCategories };
+    module.exports = { servicesData, serviceCategories, muhuratSpecialist };
 }
