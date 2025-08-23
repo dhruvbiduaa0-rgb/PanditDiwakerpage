@@ -1,6 +1,6 @@
-// Internationalization (i18n) System
+// Internationalization (i18n) System - Pure Hindi and English
 const i18n = {
-    currentLanguage: 'hindi', // Default language
+    currentLanguage: 'english', // Default language set to English
     
     // Language configurations
     languages: {
@@ -18,290 +18,277 @@ const i18n = {
         }
     },
 
-    // Translations
-    translations: {
+    // Pure Hindi Translations
+    hindiTranslations: {
         // Header and Navigation
         header: {
-            title: {
-                hindi: '॥ श्री गणेशाय नमः ॥',
-                english: '॥ Shri Ganeshaya Namah ॥'
-            },
-            subtitle: {
-                hindi: 'सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ॥',
-                english: 'May all be happy, may all be free from illness ॥'
-            }
+            title: '॥ श्री गणेशाय नमः ॥',
+            subtitle: 'सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ॥',
+            mainTitle: 'वैदिक ज्योतिष एवं कर्मकांड सेवाएं',
+            mainSubtitle: 'वैदिक अनुष्ठान एवं ज्योतिष सेवाएं'
         },
 
         // Pandit Information
         pandit: {
-            name: {
-                hindi: 'पं. दिवाकरमणि त्रिपाठी शास्त्री',
-                english: 'Pt. Diwakarmani Tripathi Shastri'
-            },
-            title: {
-                hindi: 'वैदिक ज्योतिष एवं कर्मकांड विशेषज्ञ',
-                english: 'Vedic Astrology & Ritual Expert'
-            }
+            name: 'पं. दिवाकरमणि त्रिपाठी शास्त्री',
+            title: 'वैदिक ज्योतिष एवं कर्मकांड विशेषज्ञ',
+            aboutTitle: 'हमारे बारे में',
+            aboutText: 'हम वैदिक परंपराओं के अनुसार सभी प्रकार के धार्मिक अनुष्ठान करते हैं। हमारे पास 25+ वर्षों का अनुभव है।'
         },
 
         // Expertise
         expertise: {
-            vedic: {
-                hindi: 'वैदिक विशेषज्ञ',
-                english: 'Vedic Expert'
-            },
-            astrology: {
-                hindi: 'ज्योतिष विशेषज्ञ',
-                english: 'Astrology Expert'
-            },
-            rituals: {
-                hindi: 'कर्मकांड विशेषज्ञ',
-                english: 'Ritual Expert'
-            }
-        },
-
-        // Main Content
-        main: {
-            title: {
-                hindi: 'वैदिक ज्योतिष एवं कर्मकांड सेवाएं',
-                english: 'Vedic Astrology & Ritual Services'
-            },
-            subtitle: {
-                hindi: 'वैदिक अनुष्ठान एवं ज्योतिष सेवाएं',
-                english: 'Vedic Rituals & Astrology Services'
-            },
-            pandits: {
-                hindi: 'पूज्य पिताश्री पं. हृदयशंकर त्रिपाठी एवं पं. दिवाकरमणि त्रिपाठी शास्त्री',
-                english: 'Pt. Hridayashankar Tripathi & Pt. Diwakarmani Tripathi Shastri'
-            },
-            expertise: {
-                hindi: 'वैदिक विशेषज्ञ',
-                english: 'Vedic Experts'
-            },
-            description: {
-                hindi: 'सभी प्रकार के धार्मिक अनुष्ठान वैदिक परंपराओं के अनुसार किए जाते हैं:',
-                english: 'All types of religious rituals are performed according to Vedic traditions:'
-            }
+            vedic: 'वैदिक विशेषज्ञ',
+            astrology: 'ज्योतिष विशेषज्ञ',
+            rituals: 'कर्मकांड विशेषज्ञ',
+            vedicDesc: 'वेदों के अनुसार अनुष्ठान',
+            astrologyDesc: 'ज्योतिष शास्त्र के अनुसार उपचार',
+            ritualsDesc: 'शास्त्रीय विधि से पूजा'
         },
 
         // Services Overview
-        services: {
+        servicesOverview: {
+            title: 'हमारी सेवाएं',
             marriage: {
-                title: {
-                    hindi: 'विवाह संस्कार:',
-                    english: 'Marriage Ceremonies:'
-                },
-                desc: {
-                    hindi: 'पूर्ण वैदिक विवाह अनुष्ठान और प्रक्रियाएं',
-                    english: 'Complete Vedic wedding rituals and procedures'
-                }
+                title: 'विवाह संस्कार:',
+                desc: 'पूर्ण वैदिक विवाह अनुष्ठान और प्रक्रियाएं'
             },
             religious: {
-                title: {
-                    hindi: 'धार्मिक पाठन:',
-                    english: 'Religious Recitations:'
-                }
+                title: 'धार्मिक पाठन:',
+                desc: 'वेद, पुराण और शास्त्रों का पाठ'
             },
             devotional: {
-                title: {
-                    hindi: 'भक्तिपूर्ण कार्यक्रम:',
-                    english: 'Devotional Programs:'
-                }
+                title: 'भक्तिपूर्ण कार्यक्रम:',
+                desc: 'भजन, कीर्तन और सत्संग'
             },
             astrology: {
-                title: {
-                    hindi: 'ज्योतिष सेवाएं:',
-                    english: 'Astrology Services:'
-                }
+                title: 'ज्योतिष सेवाएं:',
+                desc: 'कुंडली विश्लेषण और उपचार'
             }
         },
 
-        // Services
+        // Individual Services
         services: {
-            title: {
-                hindi: 'हमारी सेवाएं',
-                english: 'Our Services'
-            },
             ganeshPuja: {
-                title: {
-                    hindi: 'गणेश पूजा',
-                    english: 'Ganesh Puja'
-                },
-                description: {
-                    hindi: 'नए कार्य की शुरुआत के लिए भगवान गणेश की विशेष पूजा',
-                    english: 'Special worship of Lord Ganesha for new beginnings'
-                }
+                title: 'गणेश पूजा',
+                description: 'नए कार्य की शुरुआत के लिए भगवान गणेश की विशेष पूजा',
+                shortDesc: 'बाधाओं का निवारण और सफलता की प्राप्ति'
             },
             lakshmiPujan: {
-                title: {
-                    hindi: 'लक्ष्मी पूजन',
-                    english: 'Lakshmi Pujan'
-                },
-                description: {
-                    hindi: 'धन और समृद्धि के लिए माँ लक्ष्मी की विशेष पूजा',
-                    english: 'Special worship of Goddess Lakshmi for wealth and prosperity'
-                }
+                title: 'लक्ष्मी पूजन',
+                description: 'धन और समृद्धि के लिए माँ लक्ष्मी की विशेष पूजा',
+                shortDesc: 'धन-समृद्धि और व्यावसायिक सफलता'
             },
             satyanarayanVrat: {
-                title: {
-                    hindi: 'सत्यनारायण व्रत',
-                    english: 'Satyanarayan Vrat'
-                },
-                description: {
-                    hindi: 'पूर्णिमा के दिन विशेष सत्यनारायण कथा और पूजा',
-                    english: 'Special Satyanarayan Katha and worship on full moon days'
-                }
+                title: 'सत्यनारायण व्रत',
+                description: 'पूर्णिमा के दिन विशेष सत्यनारायण कथा और पूजा',
+                shortDesc: 'पारिवारिक सुख-शांति और कष्ट निवारण'
             },
             marriageCeremonies: {
-                title: {
-                    hindi: 'विवाह संस्कार',
-                    english: 'Marriage Ceremonies'
-                },
-                description: {
-                    hindi: 'पूर्ण वैदिक विवाह अनुष्ठान और समारोह',
-                    english: 'Complete Vedic wedding rituals and ceremonies'
-                }
+                title: 'विवाह संस्कार',
+                description: 'पूर्ण वैदिक विवाह अनुष्ठान और समारोह',
+                shortDesc: 'पारिवारिक एकता और आध्यात्मिक विकास'
             },
             navagrahaShanti: {
-                title: {
-                    hindi: 'नवग्रह शांति',
-                    english: 'Navagraha Shanti'
-                },
-                description: {
-                    hindi: 'ज्योतिषीय सामंजस्य के लिए ग्रह शांति अनुष्ठान',
-                    english: 'Planetary peace rituals for astrological harmony'
-                }
+                title: 'नवग्रह शांति',
+                description: 'ज्योतिषीय सामंजस्य के लिए ग्रह शांति अनुष्ठान',
+                shortDesc: 'ग्रह दोष निवारण और जीवन में संतुलन'
             },
             houseWarming: {
-                title: {
-                    hindi: 'गृहप्रवेश',
-                    english: 'House Warming'
-            },
-                description: {
-                    hindi: 'वास्तु पूजा और घर आशीर्वाद समारोह',
-                    english: 'Vastu puja and house blessing ceremonies'
-                }
+                title: 'गृहप्रवेश',
+                description: 'वास्तु पूजा और घर आशीर्वाद समारोह',
+                shortDesc: 'Peace and positive energy at home'
             }
         },
 
         // Rituals Section
         rituals: {
-            title: {
-                hindi: 'वैदिक अनुष्ठान एवं उनका महत्व',
-                english: 'Vedic Rituals & Their Significance'
-            },
+            title: 'वैदिक अनुष्ठान एवं उनका महत्व',
             majorDeity: {
-                title: {
-                    hindi: '१. प्रमुख देवता पूजा एवं त्योहार',
-                    english: '1. Major Deity Worship & Festivals'
-                },
-                description: {
-                    hindi: 'ये पूजाएं विशिष्ट देवी-देवताओं को समर्पित हैं और अक्सर प्रमुख त्योहारों के दौरान की जाती हैं। इनका उद्देश्य दैवीय आशीर्वाद प्राप्त करना, कृतज्ञता व्यक्त करना और जीवन में शुभता का आह्वान करना है।',
-                    english: 'These worships are dedicated to specific deities and are often performed during major festivals. Their purpose is to receive divine blessings, express gratitude, and invoke auspiciousness in life.'
-                }
+                title: '१. प्रमुख देवता पूजा एवं त्यौहार',
+                description: 'ये पूजाएं विशिष्ट देवी-देवताओं को समर्पित हैं और अक्सर प्रमुख त्योहारों के दौरान की जाती हैं। इनका उद्देश्य दैवीय आशीर्वाद प्राप्त करना, कृतज्ञता व्यक्त करना और जीवन में शुभता का आह्वान करना है।'
             },
             yajna: {
-                title: {
-                    hindi: '२. यज्ञ एवं हवन (अग्नि अनुष्ठान)',
-                    english: '2. Yajna & Havan (Fire Rituals)'
-                },
-                description: {
-                    hindi: 'यज्ञ या हवन वैदिक परंपरा के केंद्र में हैं, जहां अग्नि को देवताओं का मुख माना जाता है और इसके माध्यम से आहुति दी जाती है। उद्देश्य देवताओं को प्रसन्न करना, वातावरण को शुद्ध करना और ब्रह्मांडीय व्यवस्था को बनाए रखना है।',
-                    english: 'Yajna or Havan are central to Vedic tradition, where fire is considered the mouth of the deities and offerings are made through it. The purpose is to please the deities, purify the environment, and maintain cosmic order.'
-                }
+                title: '२. यज्ञ एवं हवन (अग्नि अनुष्ठान)',
+                description: 'यज्ञ या हवन वैदिक परंपरा के केंद्र में हैं, जहां अग्नि को देवताओं का मुख माना जाता है और इसके माध्यम से आहुति दी जाती है। उद्देश्य देवताओं को प्रसन्न करना, वातावरण को शुद्ध करना और ब्रह्मांडीय व्यवस्था को बनाए रखना है।'
             },
             sanskaras: {
-                title: {
-                    hindi: '३. सोलह संस्कार (जीवन चक्र अनुष्ठान)',
-                    english: '3. Sixteen Sanskaras (Life-cycle Rituals)'
-                },
-                description: {
-                    hindi: 'ये सोलह अनुष्ठान हैं जो व्यक्ति के जीवन में महत्वपूर्ण मील के पत्थरों पर किए जाते हैं, जन्म से पूर्व से लेकर मृत्यु के बाद तक। इनका उद्देश्य व्यक्ति को शारीरिक, मानसिक और आध्यात्मिक रूप से परिष्कृत करना है।',
-                    english: 'These are sixteen rituals performed at important milestones in a person\'s life, from before birth to after death. Their purpose is to refine a person physically, mentally, and spiritually.'
-                }
+                title: '३. सोलह संस्कार (जीवन चक्र अनुष्ठान)',
+                description: 'ये सोलह अनुष्ठान हैं जो व्यक्ति के जीवन में महत्वपूर्ण मील के पत्थरों पर किए जाते हैं, जन्म से पूर्व से लेकर मृत्यु के बाद तक। इनका उद्देश्य व्यक्ति को शारीरिक, मानसिक और आध्यात्मिक रूप से परिष्कृत करना है।'
             },
             astrological: {
-                title: {
-                    hindi: '४. ज्योतिषीय अनुष्ठान (उपचार पूजा)',
-                    english: '4. Astrological Rituals (Remedial Worship)'
-                },
-                description: {
-                    hindi: 'वैदिक ज्योतिष के अनुसार, ग्रहों की स्थिति व्यक्ति के जीवन को प्रभावित करती है। ज्योतिषीय अनुष्ठान ग्रहों के प्रतिकूल प्रभावों को शांत करने और उनके शुभ प्रभावों को बढ़ाने के लिए किए जाते हैं।',
-                    english: 'According to Vedic astrology, planetary positions affect a person\'s life. Astrological rituals are performed to pacify adverse planetary influences and enhance their beneficial effects.'
-                }
+                title: '४. ज्योतिषीय अनुष्ठान (उपचार पूजा)',
+                description: 'वैदिक ज्योतिष के अनुसार, ग्रहों की स्थिति व्यक्ति के जीवन को प्रभावित करती है। ज्योतिषीय अनुष्ठान ग्रहों के प्रतिकूल प्रभावों को शांत करने और उनके शुभ प्रभावों को बढ़ाने के लिए किए जाते हैं।'
             }
         },
 
         // Contact Section
         contact: {
-            'section-title': {
-                hindi: 'संपर्क करें',
-                english: 'Contact Us'
-            },
-            'mobile-title': {
-                hindi: 'मोबाइल',
-                english: 'Mobile'
-            },
-            'whatsapp-title': {
-                hindi: 'व्हाट्सएप',
-                english: 'WhatsApp'
-            },
-            'address-title': {
-                hindi: 'पता',
-                english: 'Address'
-            },
-            'timing-title': {
-                hindi: 'कार्य समय',
-                english: 'Working Hours'
-            },
-            mobile: {
-                hindi: 'मोबाइल',
-                english: 'Mobile'
-            },
-            whatsapp: {
-                hindi: 'व्हाट्सएप/कॉल',
-                english: 'WhatsApp/Call'
-            },
-            address: {
-                hindi: 'पता',
-                english: 'Address'
-            },
-            landmark: {
-                hindi: 'लैंडमार्क',
-                english: 'Landmark'
-            }
-        },
-
-        // About Section
-        about: {
-            title: {
-                hindi: 'हमारे बारे में',
-                english: 'About Us'
-            }
+            'section-title': 'संपर्क करें',
+            'mobile-title': 'मोबाइल',
+            'whatsapp-title': 'व्हाट्सएप',
+            'address-title': 'पता',
+            'timing-title': 'कार्य समय',
+            mobile: 'मोबाइल',
+            whatsapp: 'व्हाट्सएप/कॉल',
+            address: 'पता',
+            landmark: 'लैंडमार्क',
+            workingHours: 'सुबह 6:00 बजे से शाम 8:00 बजे तक',
+            addressDetail: 'श्री ज्योतिष एवं कर्मकांड केंद्र, मुख्य बाजार, शहर'
         },
 
         // Buttons
         buttons: {
-            readMore: {
-                hindi: 'और पढ़ें',
-                english: 'Read More'
-            },
-            contact: {
-                hindi: 'संपर्क करें',
-                english: 'Contact'
-            },
-            back: {
-                hindi: 'वापस जाएं',
-                english: 'Go Back'
-            }
+            readMore: 'और पढ़ें',
+            contact: 'संपर्क करें',
+            back: 'वापस जाएं',
+            bookNow: 'अभी बुक करें',
+            callNow: 'अभी कॉल करें'
         },
 
         // Footer
         footer: {
-            copyright: {
-                hindi: '© २०२४ श्री ज्योतिष एवं कर्मकांड. सर्वाधिकार सुरक्षित।',
-                english: '© 2024 Shri Jyotish & Karmakand. All rights reserved.'
+            copyright: '© २०२४ श्री ज्योतिष एवं कर्मकांड. सर्वाधिकार सुरक्षित।',
+            address: 'श्री ज्योतिष एवं कर्मकांड केंद्र, मुख्य बाजार, शहर',
+            phone: 'फोन: +91-XXXXXXXXXX',
+            email: 'ईमेल: info@example.com'
+        }
+    },
+
+    // Pure English Translations
+    englishTranslations: {
+        // Header and Navigation
+        header: {
+            title: '॥ Shri Ganeshaya Namah ॥',
+            subtitle: 'May all be happy, may all be free from illness ॥',
+            mainTitle: 'Vedic Astrology & Ritual Services',
+            mainSubtitle: 'Vedic Rituals & Astrology Services'
+        },
+
+        // Pandit Information
+        pandit: {
+            name: 'Pt. Diwakarmani Tripathi Shastri',
+            title: 'Vedic Astrology & Ritual Expert',
+            aboutTitle: 'About Us',
+            aboutText: 'We perform all types of religious rituals according to Vedic traditions. We have 25+ years of experience.'
+        },
+
+        // Expertise
+        expertise: {
+            vedic: 'Vedic Expert',
+            astrology: 'Astrology Expert',
+            rituals: 'Ritual Expert',
+            vedicDesc: 'Rituals according to Vedas',
+            astrologyDesc: 'Remedies according to Astrology',
+            ritualsDesc: 'Worship through classical methods'
+        },
+
+        // Services Overview
+        servicesOverview: {
+            title: 'Our Services',
+            marriage: {
+                title: 'Marriage Ceremonies:',
+                desc: 'Complete Vedic wedding rituals and procedures'
+            },
+            religious: {
+                title: 'Religious Recitations:',
+                desc: 'Recitation of Vedas, Puranas and Shastras'
+            },
+            devotional: {
+                title: 'Devotional Programs:',
+                desc: 'Bhajans, Kirtans and Satsangs'
+            },
+            astrology: {
+                title: 'Astrology Services:',
+                desc: 'Kundali analysis and remedies'
             }
+        },
+
+        // Individual Services
+        services: {
+            ganeshPuja: {
+                title: 'Ganesh Puja',
+                description: 'Special worship of Lord Ganesha for new beginnings',
+                shortDesc: 'Removal of obstacles and attainment of success'
+            },
+            lakshmiPujan: {
+                title: 'Lakshmi Pujan',
+                description: 'Special worship of Goddess Lakshmi for wealth and prosperity',
+                shortDesc: 'Wealth-prosperity and business success'
+            },
+            satyanarayanVrat: {
+                title: 'Satyanarayan Vrat',
+                description: 'Special Satyanarayan Katha and worship on full moon days',
+                shortDesc: 'Family peace and removal of difficulties'
+            },
+            marriageCeremonies: {
+                title: 'Marriage Ceremonies',
+                description: 'Complete Vedic wedding rituals and ceremonies',
+                shortDesc: 'Family unity and spiritual development'
+            },
+            navagrahaShanti: {
+                title: 'Navagraha Shanti',
+                description: 'Planetary peace rituals for astrological harmony',
+                shortDesc: 'Planetary dosha removal and life balance'
+            },
+            houseWarming: {
+                title: 'House Warming',
+                description: 'Vastu puja and house blessing ceremonies',
+                shortDesc: 'Peace and positive energy at home'
+            }
+        },
+
+        // Rituals Section
+        rituals: {
+            title: 'Vedic Rituals & Their Significance',
+            majorDeity: {
+                title: '1. Major Deity Worship & Festivals',
+                description: 'These worships are dedicated to specific deities and are often performed during major festivals. Their purpose is to receive divine blessings, express gratitude, and invoke auspiciousness in life.'
+            },
+            yajna: {
+                title: '2. Yajna & Havan (Fire Rituals)',
+                description: 'Yajna or Havan are central to Vedic tradition, where fire is considered the mouth of the deities and offerings are made through it. The purpose is to please the deities, purify the environment and maintain cosmic order.'
+            },
+            sanskaras: {
+                title: '3. Sixteen Sanskaras (Life-cycle Rituals)',
+                description: 'These are sixteen rituals performed at important milestones in a person\'s life, from before birth to after death. Their purpose is to refine a person physically, mentally and spiritually.'
+            },
+            astrological: {
+                title: '4. Astrological Rituals (Remedial Worship)',
+                description: 'According to Vedic astrology, planetary positions affect a person\'s life. Astrological rituals are performed to pacify adverse planetary influences and enhance their beneficial effects.'
+            }
+        },
+
+        // Contact Section
+        contact: {
+            'section-title': 'Contact Us',
+            'mobile-title': 'Mobile',
+            'whatsapp-title': 'WhatsApp',
+            'address-title': 'Address',
+            'timing-title': 'Working Hours',
+            mobile: 'Mobile',
+            whatsapp: 'WhatsApp/Call',
+            address: 'Address',
+            landmark: 'Landmark',
+            workingHours: '6:00 AM to 8:00 PM',
+            addressDetail: 'Shri Jyotish & Karmakand Center, Main Market, City'
+        },
+
+        // Buttons
+        buttons: {
+            readMore: 'Read More',
+            contact: 'Contact',
+            back: 'Go Back',
+            bookNow: 'Book Now',
+            callNow: 'Call Now'
+        },
+
+        // Footer
+        footer: {
+            copyright: '© 2024 Shri Jyotish & Karmakand. All rights reserved.',
+            address: 'Shri Jyotish & Karmakand Center, Main Market, City',
+            phone: 'Phone: +91-XXXXXXXXXX',
+            email: 'Email: info@example.com'
         }
     },
 
@@ -355,21 +342,17 @@ const i18n = {
     // Get translation for a specific key
     getTranslation(key) {
         const keys = key.split('.');
-        let translation = this.translations;
+        let translations = this.currentLanguage === 'hindi' ? this.hindiTranslations : this.englishTranslations;
         
         for (const k of keys) {
-            if (translation && translation[k]) {
-                translation = translation[k];
+            if (translations && translations[k]) {
+                translations = translations[k];
             } else {
                 return null;
             }
         }
         
-        if (translation && translation[this.currentLanguage]) {
-            return translation[this.currentLanguage];
-        }
-        
-        return null;
+        return translations;
     },
 
     // Update specific element content
@@ -418,9 +401,10 @@ const i18n = {
 
     // Get translation for a specific key
     t(key, section = 'main') {
-        const translation = this.translations[section]?.[key];
-        if (translation && translation[this.currentLanguage]) {
-            return translation[this.currentLanguage];
+        const translations = this.currentLanguage === 'hindi' ? this.hindiTranslations : this.englishTranslations;
+        const translation = translations[section]?.[key];
+        if (translation) {
+            return translation;
         }
         return key; // Fallback to key if translation not found
     }

@@ -1,61 +1,91 @@
-// Main Application JavaScript
+// Main Application Logic
 class VedicServicesApp {
     constructor() {
-        this.currentPage = 'home';
-        this.currentLanguage = 'hindi';
+        this.currentLanguage = 'english';
+        this.currentService = null;
         this.init();
     }
 
     init() {
-        this.setupEventListeners();
         this.initializeLanguage();
+        this.setupEventListeners();
+        this.setupNavigation();
+        this.setupServiceCards();
         this.setupServiceNavigation();
-        this.setupSmoothScrolling();
-        this.setupContactButtons();
         this.setupReadMoreButtons();
+        this.setupContactButtons();
+        this.setupSmoothScrolling();
         this.setupScrollAnimations();
+        this.addFloatingAnimation();
     }
 
-    // Initialize language system
     initializeLanguage() {
+        // Initialize with English as default
         if (typeof i18n !== 'undefined') {
             i18n.init();
+            this.currentLanguage = i18n.currentLanguage;
         }
     }
 
-    // Setup all event listeners
     setupEventListeners() {
-        // Language toggle
-        document.getElementById('hindiBtn')?.addEventListener('click', () => {
-            this.setLanguage('hindi');
-        });
-        
-        document.getElementById('englishBtn')?.addEventListener('click', () => {
-            this.setLanguage('english');
-        });
+        // Language toggle event listeners
+        const hindiBtn = document.getElementById('hindiBtn');
+        const englishBtn = document.getElementById('englishBtn');
 
-        // Navigation
-        this.setupNavigation();
-        
-        // Service cards
-        this.setupServiceCards();
+        if (hindiBtn && englishBtn) {
+            hindiBtn.addEventListener('click', () => {
+                this.setLanguage('hindi');
+            });
+
+            englishBtn.addEventListener('click', () => {
+                this.setLanguage('english');
+            });
+        }
     }
 
-    // Setup navigation
     setupNavigation() {
-        const navLinks = document.querySelectorAll('[data-nav]');
+        // Smooth scrolling for navigation links
+        const navLinks = document.querySelectorAll('a[href^="#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = link.getAttribute('data-nav');
-                this.navigateTo(target);
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
     }
 
-    // Setup service cards
     setupServiceCards() {
-        const readMoreButtons = document.querySelectorAll('[data-service]');
+        // Add hover effects and animations to service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('hover:scale-105');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('hover:scale-105');
+            });
+        });
+    }
+
+    setupServiceNavigation() {
+        // Handle service navigation and detail pages
+        const serviceLinks = document.querySelectorAll('[data-service]');
+        serviceLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const serviceId = link.getAttribute('data-service');
+                this.showServiceDetails(serviceId);
+            });
+        });
+    }
+
+    setupReadMoreButtons() {
+        // Handle read more button clicks
+        const readMoreButtons = document.querySelectorAll('.read-more-btn');
         readMoreButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -65,40 +95,8 @@ class VedicServicesApp {
         });
     }
 
-    // Setup service navigation
-    setupServiceNavigation() {
-        const serviceButtons = document.querySelectorAll('.service-card button');
-        serviceButtons.forEach(button => {
-            if (button.textContent.includes('Read More') || button.textContent.includes('और पढ़ें')) {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const serviceCard = button.closest('.service-card');
-                    const serviceTitle = serviceCard.querySelector('h3').textContent;
-                    const serviceId = this.getServiceIdFromTitle(serviceTitle);
-                    if (serviceId) {
-                        this.showServiceDetails(serviceId);
-                    }
-                });
-            }
-        });
-    }
-
-    // Setup read more buttons specifically
-    setupReadMoreButtons() {
-        const readMoreButtons = document.querySelectorAll('.read-more-btn');
-        readMoreButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const serviceId = button.getAttribute('data-service');
-                if (serviceId) {
-                    this.showServiceDetails(serviceId);
-                }
-            });
-        });
-    }
-
-    // Setup contact buttons
     setupContactButtons() {
+        // Handle contact button clicks
         const contactButtons = document.querySelectorAll('.contact-btn');
         contactButtons.forEach(button => {
             button.addEventListener('click', (e) => {
@@ -108,159 +106,178 @@ class VedicServicesApp {
         });
     }
 
-    // Scroll to contact section
     scrollToContact() {
         const contactSection = document.getElementById('contact');
         if (contactSection) {
-            contactSection.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
+            contactSection.scrollIntoView({ behavior: 'smooth' });
         }
     }
 
-    // Get service ID from title
     getServiceIdFromTitle(title) {
+        // Convert service title to service ID
         const serviceMap = {
-            'Ganesh Puja': 'ganesh-puja',
-            'गणेश पूजा': 'ganesh-puja',
-            'Lakshmi Pujan': 'lakshmi-pujan',
-            'लक्ष्मी पूजन': 'lakshmi-pujan',
-            'Satyanarayan Vrat': 'satyanarayan-vrat',
-            'सत्यनारायण व्रत': 'satyanarayan-vrat',
-            'Marriage Ceremonies': 'marriage-ceremonies',
-            'विवाह संस्कार': 'marriage-ceremonies',
-            'Navagraha Shanti': 'navagraha-shanti',
-            'नवग्रह शांति': 'navagraha-shanti',
-            'House Warming': 'house-warming',
-            'गृहप्रवेश': 'house-warming'
+            'ganesh-puja': 'ganeshPuja',
+            'lakshmi-pujan': 'lakshmiPujan',
+            'satyanarayan-vrat': 'satyanarayanVrat',
+            'marriage-ceremonies': 'marriageCeremonies',
+            'navagraha-shanti': 'navagrahaShanti',
+            'house-warming': 'houseWarming'
         };
-        return serviceMap[title];
+        return serviceMap[title] || title;
     }
 
-    // Show service details page
     showServiceDetails(serviceId) {
-        if (!servicesData[serviceId]) {
-            console.error(`Service ${serviceId} not found`);
+        const serviceData = servicesData[serviceId];
+        if (!serviceData) {
+            console.error('Service not found:', serviceId);
             return;
         }
 
-        const service = servicesData[serviceId];
-        this.currentPage = 'service-details';
+        this.currentService = serviceId;
+        const detailsContent = this.createServiceDetailsPage(serviceData);
         
-        // Create service details page
-        const detailsPage = this.createServiceDetailsPage(service);
+        document.getElementById('serviceDetailsContent').innerHTML = detailsContent;
+        document.getElementById('serviceDetailsContainer').classList.remove('hidden');
         
-        // Replace main content
-        const mainContent = document.querySelector('main') || document.querySelector('body');
-        mainContent.innerHTML = detailsPage;
-        
-        // Update navigation
-        this.updateNavigation();
-        
-        // Setup back button
         this.setupBackButton();
-        
-        // Update language content
-        if (typeof i18n !== 'undefined') {
-            i18n.updateContent();
-        }
+        this.updateNavigation();
     }
 
-    // Create service details page
     createServiceDetailsPage(service) {
-        const currentLang = this.currentLanguage;
+        const isHindi = this.currentLanguage === 'hindi';
+        const lang = isHindi ? 'hindi' : 'english';
         
         return `
-            <div class="service-details-page bg-amber-50 min-h-screen">
-                <!-- Back Button -->
-                <div class="bg-amber-600 text-white py-4">
-                    <div class="container mx-auto px-4">
-                        <button id="backBtn" class="flex items-center text-white hover:text-amber-100 transition-colors">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                            <span data-i18n="buttons-back">${currentLang === 'hindi' ? 'वापस जाएं' : 'Go Back'}</span>
-                        </button>
-                    </div>
+            <div class="service-details-page">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-3xl md:text-4xl font-bold text-amber-800">
+                        ${service.title[lang]}
+                    </h1>
+                    <button id="backBtn" class="btn btn-secondary">
+                        <span data-i18n="buttons.back">${isHindi ? 'वापस जाएं' : 'Go Back'}</span>
+                    </button>
                 </div>
 
-                <!-- Service Header -->
-                <div class="bg-gradient-to-r from-orange-400 to-amber-600 text-white py-12">
-                    <div class="container mx-auto px-4 text-center">
-                        <h1 class="text-4xl font-bold mb-4">${service.title[currentLang]}</h1>
-                        <p class="text-xl">${service.deity[currentLang]}</p>
-                    </div>
-                </div>
-
-                <!-- Service Content -->
-                <div class="py-12">
-                    <div class="container mx-auto px-4">
-                        <div class="max-w-4xl mx-auto">
-                            <!-- Description -->
-                            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-                                <h2 class="text-2xl font-bold text-amber-800 mb-4">${currentLang === 'hindi' ? 'विवरण' : 'Description'}</h2>
-                                <p class="text-lg text-gray-700 leading-relaxed">${service.description[currentLang]}</p>
-                            </div>
-
-                            <!-- Significance -->
-                            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-                                <h2 class="text-2xl font-bold text-amber-800 mb-4">${currentLang === 'hindi' ? 'महत्व' : 'Significance'}</h2>
-                                <p class="text-lg text-gray-700 leading-relaxed">${service.significance[currentLang]}</p>
-                            </div>
-
-                            <!-- Benefits -->
-                            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-                                <h2 class="text-2xl font-bold text-amber-800 mb-4">${currentLang === 'hindi' ? 'लाभ' : 'Benefits'}</h2>
-                                <p class="text-lg text-gray-700 leading-relaxed">${service.benefits[currentLang]}</p>
-                            </div>
-
-                            <!-- Service Details Grid -->
-                            <div class="grid md:grid-cols-2 gap-8 mb-8">
-                                <!-- Duration -->
-                                <div class="bg-white rounded-lg shadow-lg p-6">
-                                    <h3 class="text-xl font-semibold text-amber-800 mb-3">${currentLang === 'hindi' ? 'अवधि' : 'Duration'}</h3>
-                                    <p class="text-gray-700">${service.duration[currentLang]}</p>
-                                </div>
-
-                                <!-- Best Time -->
-                                <div class="bg-white rounded-lg shadow-lg p-6">
-                                    <h3 class="text-xl font-semibold text-amber-800 mb-3">${currentLang === 'hindi' ? 'सर्वोत्तम समय' : 'Best Time'}</h3>
-                                    <p class="text-gray-700">${service.bestTime[currentLang]}</p>
-                                </div>
-                            </div>
-
-                            <!-- Materials Required -->
-                            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-                                <h2 class="text-2xl font-bold text-amber-800 mb-4">${currentLang === 'hindi' ? 'आवश्यक सामग्री' : 'Materials Required'}</h2>
-                                <p class="text-lg text-gray-700">${service.materials[currentLang]}</p>
-                            </div>
-
-                            <!-- Contact Section -->
-                            <div class="bg-amber-100 rounded-lg p-8 text-center">
-                                <h2 class="text-2xl font-bold text-amber-800 mb-4">${currentLang === 'hindi' ? 'इस सेवा के लिए संपर्क करें' : 'Contact for this Service'}</h2>
-                                <div class="grid md:grid-cols-2 gap-6 mb-6">
-                                    <div>
-                                        <p class="text-lg font-semibold">📱 ${currentLang === 'hindi' ? 'मोबाइल' : 'Mobile'}</p>
-                                        <p class="text-gray-700">+91 9343775709</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-lg font-semibold">📱 ${currentLang === 'hindi' ? 'व्हाट्सएप/कॉल' : 'WhatsApp/Call'}</p>
-                                        <p class="text-gray-700">+91 8766453937</p>
-                                    </div>
-                                </div>
-                                <button class="bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors">
-                                    ${currentLang === 'hindi' ? 'संपर्क करें' : 'Contact Now'}
-                                </button>
-                            </div>
+                <!-- Service Overview -->
+                <div class="bg-amber-50 rounded-2xl p-8 mb-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-amber-800 mb-4">
+                                ${isHindi ? 'सेवा विवरण' : 'Service Overview'}
+                            </h2>
+                            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                                ${service.description[lang]}
+                            </p>
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                ${service.significance[lang]}
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-amber-800 mb-4">
+                                ${isHindi ? 'मुख्य लाभ' : 'Key Benefits'}
+                            </h3>
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                ${service.benefits[lang]}
+                            </p>
                         </div>
                     </div>
+                </div>
+
+                <!-- Detailed Benefits -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-amber-800 mb-6">
+                        ${isHindi ? 'विस्तृत लाभ' : 'Detailed Benefits'}
+                    </h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="benefit-category">
+                            <h3 class="text-lg font-semibold text-amber-700 mb-3">
+                                ${isHindi ? 'शारीरिक लाभ' : 'Physical Benefits'}
+                            </h3>
+                            <p class="text-gray-700">
+                                ${service.detailedBenefits[lang].split('।')[0]}
+                            </p>
+                        </div>
+                        <div class="benefit-category">
+                            <h3 class="text-lg font-semibold text-amber-700 mb-3">
+                                ${isHindi ? 'मानसिक लाभ' : 'Mental Benefits'}
+                            </h3>
+                            <p class="text-gray-700">
+                                ${service.detailedBenefits[lang].split('।')[1]}
+                            </p>
+                        </div>
+                        <div class="benefit-category">
+                            <h3 class="text-lg font-semibold text-amber-700 mb-3">
+                                ${isHindi ? 'आध्यात्मिक लाभ' : 'Spiritual Benefits'}
+                            </h3>
+                            <p class="text-gray-700">
+                                ${service.detailedBenefits[lang].split('।')[2]}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Procedure and Materials -->
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <h2 class="text-2xl font-bold text-amber-800 mb-6">
+                            ${isHindi ? 'पूजा प्रक्रिया' : 'Puja Procedure'}
+                        </h2>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            ${service.procedure[lang]}
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <h2 class="text-2xl font-bold text-amber-800 mb-6">
+                            ${isHindi ? 'आवश्यक सामग्री' : 'Required Materials'}
+                        </h2>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            ${service.materials[lang]}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+                        <h3 class="text-lg font-semibold text-amber-700 mb-3">
+                            ${isHindi ? 'समय' : 'Duration'}
+                        </h3>
+                        <p class="text-gray-700 text-lg">
+                            ${service.duration[lang]}
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+                        <h3 class="text-lg font-semibold text-amber-700 mb-3">
+                            ${isHindi ? 'शुभ समय' : 'Best Time'}
+                        </h3>
+                        <p class="text-gray-700 text-lg">
+                            ${service.bestTime[lang]}
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+                        <h3 class="text-lg font-semibold text-amber-700 mb-3">
+                            ${isHindi ? 'वैज्ञानिक आधार' : 'Scientific Basis'}
+                        </h3>
+                        <p class="text-gray-700 text-lg">
+                            ${service.scientificBasis[lang]}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn btn-primary text-lg px-8 py-4">
+                        <span data-i18n="buttons.bookNow">${isHindi ? 'अभी बुक करें' : 'Book Now'}</span>
+                    </button>
+                    <button class="btn btn-secondary text-lg px-8 py-4" onclick="this.scrollToContact()">
+                        <span data-i18n="buttons.contact">${isHindi ? 'संपर्क करें' : 'Contact'}</span>
+                    </button>
                 </div>
             </div>
         `;
     }
 
-    // Setup back button
     setupBackButton() {
         const backBtn = document.getElementById('backBtn');
         if (backBtn) {
@@ -270,102 +287,77 @@ class VedicServicesApp {
         }
     }
 
-    // Go back to previous page
     goBack() {
-        if (this.currentPage === 'service-details') {
-            this.currentPage = 'home';
-            location.reload(); // Simple way to go back to home
-        }
+        document.getElementById('serviceDetailsContainer').classList.add('hidden');
+        this.currentService = null;
+        this.updateNavigation();
     }
 
-    // Setup smooth scrolling
     setupSmoothScrolling() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+        // Enable smooth scrolling for the entire page
+        document.documentElement.style.scrollBehavior = 'smooth';
     }
 
-    // Setup scroll animations
-    setupScrollAnimations() {
-        // Intersection Observer for scroll animations
-        if ('IntersectionObserver' in window) {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all animated elements
-            document.querySelectorAll('.service-card, .ritual-category, .contact-card, .service-overview-card').forEach(el => {
-                observer.observe(el);
-            });
-        }
-    }
-
-    // Set language
     setLanguage(language) {
         this.currentLanguage = language;
         if (typeof i18n !== 'undefined') {
             i18n.setLanguage(language);
         }
-    }
-
-    // Navigate to specific section
-    navigateTo(target) {
-        const element = document.querySelector(target);
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth'
-            });
+        
+        // Update service details if currently viewing one
+        if (this.currentService) {
+            const serviceData = servicesData[this.currentService];
+            if (serviceData) {
+                const detailsContent = this.createServiceDetailsPage(serviceData);
+                document.getElementById('serviceDetailsContent').innerHTML = detailsContent;
+                this.setupBackButton();
+            }
         }
     }
 
-    // Update navigation
-    updateNavigation() {
-        // Update active navigation state if needed
-        const navItems = document.querySelectorAll('[data-nav]');
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('data-nav') === this.currentPage) {
-                item.classList.add('active');
-            }
-        });
+    navigateTo(serviceId) {
+        this.showServiceDetails(serviceId);
     }
 
-    // Add floating animation to elements
+    updateNavigation() {
+        // Update any navigation-related UI elements
+        const currentPath = window.location.pathname;
+        // Add any navigation update logic here
+    }
+
+    setupScrollAnimations() {
+        // Setup scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        const elementsToAnimate = document.querySelectorAll('.service-card, .ritual-category, .contact-card, .service-overview-card, .expertise-item');
+        elementsToAnimate.forEach(el => observer.observe(el));
+    }
+
     addFloatingAnimation() {
+        // Add floating animation to icons
         const floatingElements = document.querySelectorAll('.expertise-icon, .contact-icon');
         floatingElements.forEach((el, index) => {
             el.style.animationDelay = `${index * 0.2}s`;
+            el.classList.add('animate-float');
         });
     }
 }
 
-// Initialize app when DOM is loaded
+// Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.vedicApp = new VedicServicesApp();
-    
-    // Add floating animations after a short delay
-    setTimeout(() => {
-        if (window.vedicApp) {
-            window.vedicApp.addFloatingAnimation();
-        }
-    }, 1000);
+    new VedicServicesApp();
 });
 
 // Export for use in other modules

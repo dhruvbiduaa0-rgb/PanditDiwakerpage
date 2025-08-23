@@ -1,78 +1,75 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>श्री ज्योतिष एवं कर्मकांड - पं. त्रिपाठी</title>
-    <meta name="description" content="वैदिक रीति द्वारा सभी प्रकार के धार्मिक अनुष्ठान, यज्ञ, पूजा-पाठ, संस्कार एवं ज्योतिष सेवाएं। गणेश पूजा, लक्ष्मी पूजन, सत्यनारायण व्रत, विवाह संस्कार और अन्य वैदिक कर्मकांड।">
-    <meta name="keywords" content="पंडित, ज्योतिष, कर्मकांड, वैदिक पूजा, यज्ञ, संस्कार, अनुष्ठान, बैंगलोर पंडित">
-    <meta name="author" content="पं. दिवाकरमणि त्रिपाठी शास्त्री">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title data-i18n="header.mainTitle">Vedic Astrology & Ritual Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-amber-50 text-gray-800">
+<body class="bg-gradient-to-br from-amber-50 to-orange-100 min-h-screen">
     <!-- Language Toggle -->
-    <div class="language-toggle">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center space-x-4">
-                <button id="englishBtn" class="language-btn">English</button>
-                <button id="hindiBtn" class="language-btn active">हिंदी</button>
-            </div>
+    <div class="fixed top-4 right-4 z-50">
+        <div class="bg-white rounded-lg shadow-lg p-2 flex space-x-2">
+            <button id="englishBtn" class="language-btn active px-3 py-1 rounded-md text-sm font-medium transition-all duration-300">
+                English
+            </button>
+            <button id="hindiBtn" class="language-btn px-3 py-1 rounded-md text-sm font-medium transition-all duration-300">
+                हिंदी
+            </button>
         </div>
     </div>
 
-    <!-- Hero Header Section -->
-    <header class="hero-header">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="hero-title" data-i18n="header-title">॥ श्री गणेशाय नमः ॥</h1>
-            <p class="hero-subtitle" data-i18n="header-subtitle">सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ॥</p>
-            <div class="hero-images">
-                <img src="images/hero-ganesh.webp" alt="श्री गणेश" class="w-24 h-24 object-cover rounded-lg shadow-lg">
-                <img src="images/hero-durga.webp" alt="माँ दुर्गा" class="w-24 h-24 object-cover rounded-lg shadow-lg">
-            </div>
-        </div>
+    <!-- Hero Header -->
+    <header class="hero-header text-center py-16 px-4">
+        <h1 class="text-4xl md:text-6xl font-bold text-amber-800 mb-4" data-i18n="header.title">
+            ॥ Shri Ganeshaya Namah ॥
+        </h1>
+        <p class="text-xl md:text-2xl text-amber-700 mb-8" data-i18n="header.subtitle">
+            May all be happy, may all be free from illness ॥
+        </p>
+        <h2 class="text-3xl md:text-5xl font-bold text-amber-900 mb-6" data-i18n="header.mainTitle">
+            Vedic Astrology & Ritual Services
+        </h2>
+        <p class="text-xl md:text-2xl text-amber-800 mb-8" data-i18n="header.mainSubtitle">
+            Vedic Rituals & Astrology Services
+        </p>
     </header>
 
-    <!-- Main Pandit Image Section - Moved Up -->
-    <section class="pandit-hero-section">
-        <div class="container mx-auto px-4 text-center">
-            <div class="max-w-3xl mx-auto">
-                <div class="pandit-image-container">
-                    <img src="images/services/Panditji-image.png" alt="पं. दिवाकरमणि त्रिपाठी शास्त्री" class="pandit-hero-image">
-                    <div class="pandit-overlay">
-                        <h2 class="pandit-name" data-i18n="pandit-name">पं. दिवाकरमणि त्रिपाठी शास्त्री</h2>
-                        <p class="pandit-title" data-i18n="pandit-title">वैदिक ज्योतिष एवं कर्मकांड विशेषज्ञ</p>
-                    </div>
+    <!-- Pandit Hero Section -->
+    <section class="pandit-hero-section py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="pandit-image-container relative mb-8">
+                <img src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Pandit Ji" class="pandit-hero-image">
+                <div class="pandit-overlay">
+                    <h3 class="pandit-name" data-i18n="pandit.name">Pt. Diwakarmani Tripathi Shastri</h3>
+                    <p class="pandit-title" data-i18n="pandit.title">Vedic Astrology & Ritual Expert</p>
                 </div>
+            </div>
+            
+            <div class="pandit-info-card bg-white rounded-2xl shadow-xl p-8">
+                <h3 class="text-2xl font-bold text-amber-800 mb-6" data-i18n="pandit.aboutTitle">About Us</h3>
+                <p class="text-lg text-gray-700 mb-8 leading-relaxed" data-i18n="pandit.aboutText">
+                    We perform all types of religious rituals according to Vedic traditions. We have 25+ years of experience.
+                </p>
                 
-                <div class="pandit-info-card">
-                    <h3 class="text-2xl font-bold text-amber-800 mb-4" data-i18n="about-title">हमारे बारे में</h3>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        वैदिक अनुष्ठान और ज्योतिष सेवाएं प्रदान करने में 20 से अधिक वर्षों का अनुभव। 
-                        सभी प्रकार के धार्मिक समारोह, यज्ञ, पूजा अनुष्ठान और संस्कार शास्त्रीय विधियों का उपयोग करके किए जाते हैं। 
-                        प्रामाणिक वैदिक ज्योतिष परामर्श और उपचार भी उपलब्ध हैं।
-                    </p>
-                    
-                    <div class="expertise-grid">
-                        <div class="expertise-item">
-                            <span class="expertise-icon">🕉️</span>
-                            <span data-i18n="expertise-vedic">वैदिक विशेषज्ञ</span>
-                        </div>
-                        <div class="expertise-item">
-                            <span class="expertise-icon">🔮</span>
-                            <span data-i18n="expertise-astrology">ज्योतिष विशेषज्ञ</span>
-                        </div>
-                        <div class="expertise-item">
-                            <span class="expertise-icon">🙏</span>
-                            <span data-i18n="expertise-rituals">कर्मकांड विशेषज्ञ</span>
-                        </div>
+                <div class="expertise-grid">
+                    <div class="expertise-item">
+                        <div class="expertise-icon">🕉️</div>
+                        <h4 class="expertise-title" data-i18n="expertise.vedic">Vedic Expert</h4>
+                        <p class="expertise-desc" data-i18n="expertise.vedicDesc">Rituals according to Vedas</p>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">⭐</div>
+                        <h4 class="expertise-title" data-i18n="expertise.astrology">Astrology Expert</h4>
+                        <p class="expertise-desc" data-i18n="expertise.astrologyDesc">Remedies according to Astrology</p>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">🔥</div>
+                        <h4 class="expertise-title" data-i18n="expertise.rituals">Ritual Expert</h4>
+                        <p class="expertise-desc" data-i18n="expertise.ritualsDesc">Worship through classical methods</p>
                     </div>
                 </div>
             </div>
@@ -80,130 +77,158 @@
     </section>
 
     <!-- Welcome Note Section -->
-    <section class="welcome-section">
-        <div class="container mx-auto px-4">
-            <div class="welcome-content">
-                <h2 class="welcome-title" data-i18n="main-title">वैदिक ज्योतिष एवं कर्मकांड सेवाएं</h2>
-                <h3 class="welcome-subtitle" data-i18n="main-subtitle">वैदिक अनुष्ठान एवं ज्योतिष सेवाएं</h3>
-
-                <div class="pandit-info">
-                    <p class="pandit-names" data-i18n="main-pandits">पूज्य पिताश्री पं. हृदयशंकर त्रिपाठी एवं पं. दिवाकरमणि त्रिपाठी शास्त्री</p>
-                    <span class="expertise-badge" data-i18n="main-expertise">वैदिक विशेषज्ञ</span>
+    <section class="welcome-section py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-800 text-center mb-12" data-i18n="servicesOverview.title">
+                Our Services
+            </h2>
+            
+            <div class="services-overview-grid">
+                <div class="service-overview-card">
+                    <h3 class="service-overview-title" data-i18n="servicesOverview.marriage.title">Marriage Ceremonies:</h3>
+                    <p class="service-overview-desc" data-i18n="servicesOverview.marriage.desc">Complete Vedic wedding rituals and procedures</p>
                 </div>
-
-                <p class="mb-6 text-lg" data-i18n="main-description">सभी प्रकार के धार्मिक अनुष्ठान वैदिक परंपराओं के अनुसार किए जाते हैं:</p>
-
-                <div class="services-overview-grid">
-                    <div class="service-overview-card">
-                        <h4 class="font-semibold text-amber-800 mb-2" data-i18n="services-marriage-title">विवाह संस्कार:</h4>
-                        <p data-i18n="services-marriage-desc">पूर्ण वैदिक विवाह अनुष्ठान और प्रक्रियाएं</p>
-                    </div>
-                    <div class="service-overview-card">
-                        <h4 class="font-semibold text-amber-800 mb-2" data-i18n="services-religious-title">धार्मिक पाठन:</h4>
-                        <ul class="list-disc list-inside">
-                            <li>सत्यनारायण कथा</li>
-                            <li>अखंड रामायण</li>
-                            <li>सुंदरकांड पाठ</li>
-                            <li>भागवत कथा</li>
-                        </ul>
-                    </div>
-                    <div class="service-overview-card">
-                        <h4 class="font-semibold text-amber-800 mb-2" data-i18n="services-devotional-title">भक्तिपूर्ण कार्यक्रम:</h4>
-                        <p>भजन संध्या एवं जागरण</p>
-                    </div>
-                    <div class="service-overview-card">
-                        <h4 class="font-semibold text-amber-800 mb-2" data-i18n="services-astrology-title">ज्योतिष सेवाएं:</h4>
-                        <ul class="list-disc list-inside">
-                            <li>कुंडली (जन्म कुंडली) निर्माण</li>
-                            <li>कुंडली मिलान (वैवाहिक)</li>
-                        </ul>
-                    </div>
+                <div class="service-overview-card">
+                    <h3 class="service-overview-title" data-i18n="servicesOverview.religious.title">Religious Recitations:</h3>
+                    <p class="service-overview-desc" data-i18n="servicesOverview.religious.desc">Recitation of Vedas, Puranas and Shastras</p>
+                </div>
+                <div class="service-overview-card">
+                    <h3 class="service-overview-title" data-i18n="servicesOverview.devotional.title">Devotional Programs:</h3>
+                    <p class="service-overview-desc" data-i18n="servicesOverview.devotional.desc">Bhajans, Kirtans and Satsangs</p>
+                </div>
+                <div class="service-overview-card">
+                    <h3 class="service-overview-title" data-i18n="servicesOverview.astrology.title">Astrology Services:</h3>
+                    <p class="service-overview-desc" data-i18n="servicesOverview.astrology.desc">Kundali analysis and remedies</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-amber-800 mb-12" data-i18n="services-title">हमारी सेवाएं</h2>
-
+    <!-- Services Grid -->
+    <section class="services-section py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-800 text-center mb-12" data-i18n="servicesOverview.title">
+                Our Services
+            </h2>
+            
             <div class="services-grid">
-                <!-- Service Card 1 -->
+                <!-- Ganesh Puja -->
                 <div class="service-card" data-service="ganesh-puja">
-                    <img src="images/services/service-ganesh-pooja.webp" alt="गणेश पूजा" class="w-full h-48 object-cover">
-                    <div class="service-card-content">
-                        <h3 class="service-title" data-i18n="services-ganeshPuja-title">गणेश पूजा</h3>
-                        <p class="service-description" data-i18n="services-ganeshPuja-description">नए कार्य की शुरुआत के लिए भगवान गणेश की विशेष पूजा</p>
-                        <div class="service-actions">
-                            <button type="button" class="btn btn-primary read-more-btn" data-service="ganesh-puja">और पढ़ें</button>
-                            <button type="button" class="btn btn-secondary contact-btn">संपर्क करें</button>
-                        </div>
+                    <div class="service-icon">🕉️</div>
+                    <h3 class="service-title" data-i18n="services.ganeshPuja.title">Ganesh Puja</h3>
+                    <p class="service-description" data-i18n="services.ganeshPuja.description">
+                        Special worship of Lord Ganesha for new beginnings
+                    </p>
+                    <p class="service-short-desc" data-i18n="services.ganeshPuja.shortDesc">
+                        Removal of obstacles and attainment of success
+                    </p>
+                    <div class="service-actions">
+                        <button class="btn btn-primary read-more-btn" data-service="ganesh-puja">
+                            <span data-i18n="buttons.readMore">Read More</span>
+                        </button>
+                        <button class="btn btn-secondary contact-btn">
+                            <span data-i18n="buttons.contact">Contact</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service Card 2 -->
+                <!-- Lakshmi Pujan -->
                 <div class="service-card" data-service="lakshmi-pujan">
-                    <img src="images/services/service-lakshmi-poojan.webp" alt="लक्ष्मी पूजन" class="w-full h-48 object-cover">
-                    <div class="service-card-content">
-                        <h3 class="service-title" data-i18n="services-lakshmiPujan-title">लक्ष्मी पूजन</h3>
-                        <p class="service-description" data-i18n="services-lakshmiPujan-description">धन और समृद्धि के लिए माँ लक्ष्मी की विशेष पूजा</p>
-                        <div class="service-actions">
-                            <button type="button" class="btn btn-primary read-more-btn" data-service="lakshmi-pujan">और पढ़ें</button>
-                            <button type="button" class="btn btn-secondary contact-btn">संपर्क करें</button>
-                        </div>
+                    <div class="service-icon">💰</div>
+                    <h3 class="service-title" data-i18n="services.lakshmiPujan.title">Lakshmi Pujan</h3>
+                    <p class="service-description" data-i18n="services.lakshmiPujan.description">
+                        Special worship of Goddess Lakshmi for wealth and prosperity
+                    </p>
+                    <p class="service-short-desc" data-i18n="services.lakshmiPujan.shortDesc">
+                        Wealth-prosperity and business success
+                    </p>
+                    <div class="service-actions">
+                        <button class="btn btn-primary read-more-btn" data-service="lakshmi-pujan">
+                            <span data-i18n="buttons.readMore">Read More</span>
+                        </button>
+                        <button class="btn btn-secondary contact-btn">
+                            <span data-i18n="buttons.contact">Contact</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service Card 3 -->
+                <!-- Satyanarayan Vrat -->
                 <div class="service-card" data-service="satyanarayan-vrat">
-                    <img src="images/services/service-satnarayanvrat.webp" alt="सत्यनारायण व्रत" class="w-full h-48 object-cover">
-                    <div class="service-card-content">
-                        <h3 class="service-title" data-i18n="services-satyanarayanVrat-title">सत्यनारायण व्रत</h3>
-                        <p class="service-description" data-i18n="services-satyanarayanVrat-description">पूर्णिमा के दिन विशेष सत्यनारायण कथा और पूजा</p>
-                        <div class="service-actions">
-                            <button type="button" class="btn btn-primary read-more-btn" data-service="satyanarayan-vrat">और पढ़ें</button>
-                            <button type="button" class="btn btn-secondary contact-btn">संपर्क करें</button>
-                        </div>
+                    <div class="service-icon">📖</div>
+                    <h3 class="service-title" data-i18n="services.satyanarayanVrat.title">Satyanarayan Vrat</h3>
+                    <p class="service-description" data-i18n="services.satyanarayanVrat.description">
+                        Special Satyanarayan Katha and worship on full moon days
+                    </p>
+                    <p class="service-short-desc" data-i18n="services.satyanarayanVrat.shortDesc">
+                        Family peace and removal of difficulties
+                    </p>
+                    <div class="service-actions">
+                        <button class="btn btn-primary read-more-btn" data-service="satyanarayan-vrat">
+                            <span data-i18n="buttons.readMore">Read More</span>
+                        </button>
+                        <button class="btn btn-secondary contact-btn">
+                            <span data-i18n="buttons.contact">Contact</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service Card 4 -->
+                <!-- Marriage Ceremonies -->
                 <div class="service-card" data-service="marriage-ceremonies">
-                    <img src="images/services/service-vivah-sanskar.webp" alt="विवाह संस्कार" class="w-full h-48 object-cover">
-                    <div class="service-card-content">
-                        <h3 class="service-title" data-i18n="services-marriageCeremonies-title">विवाह संस्कार</h3>
-                        <p class="service-description" data-i18n="services-marriageCeremonies-description">पूर्ण वैदिक विवाह अनुष्ठान और समारोह</p>
-                        <div class="service-actions">
-                            <button type="button" class="btn btn-primary read-more-btn" data-service="marriage-ceremonies">और पढ़ें</button>
-                            <button type="button" class="btn btn-secondary contact-btn">संपर्क करें</button>
-                        </div>
+                    <div class="service-icon">💒</div>
+                    <h3 class="service-title" data-i18n="services.marriageCeremonies.title">Marriage Ceremonies</h3>
+                    <p class="service-description" data-i18n="services.marriageCeremonies.description">
+                        Complete Vedic wedding rituals and ceremonies
+                    </p>
+                    <p class="service-short-desc" data-i18n="services.marriageCeremonies.shortDesc">
+                        Family unity and spiritual development
+                    </p>
+                    <div class="service-actions">
+                        <button class="btn btn-primary read-more-btn" data-service="marriage-ceremonies">
+                            <span data-i18n="buttons.readMore">Read More</span>
+                        </button>
+                        <button class="btn btn-secondary contact-btn">
+                            <span data-i18n="buttons.contact">Contact</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service Card 5 -->
+                <!-- Navagraha Shanti -->
                 <div class="service-card" data-service="navagraha-shanti">
-                    <img src="images/services/service-navgrah-shanti.webp" alt="नवग्रह शांति" class="w-full h-48 object-cover">
-                    <div class="service-card-content">
-                        <h3 class="service-title" data-i18n="services-navagrahaShanti-title">नवग्रह शांति</h3>
-                        <p class="service-description" data-i18n="services-navagrahaShanti-description">ज्योतिषीय सामंजस्य के लिए ग्रह शांति अनुष्ठान</p>
-                        <div class="service-actions">
-                            <button type="button" class="btn btn-primary read-more-btn" data-service="navagraha-shanti">और पढ़ें</button>
-                            <button type="button" class="btn btn-secondary contact-btn">संपर्क करें</button>
-                        </div>
+                    <div class="service-icon">⭐</div>
+                    <h3 class="service-title" data-i18n="services.navagrahaShanti.title">Navagraha Shanti</h3>
+                    <p class="service-description" data-i18n="services.navagrahaShanti.description">
+                        Planetary peace rituals for astrological harmony
+                    </p>
+                    <p class="service-short-desc" data-i18n="services.navagrahaShanti.shortDesc">
+                        Planetary dosha removal and life balance
+                    </p>
+                    <div class="service-actions">
+                        <button class="btn btn-primary read-more-btn" data-service="navagraha-shanti">
+                            <span data-i18n="buttons.readMore">Read More</span>
+                        </button>
+                        <button class="btn btn-secondary contact-btn">
+                            <span data-i18n="buttons.contact">Contact</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service Card 6 -->
+                <!-- House Warming -->
                 <div class="service-card" data-service="house-warming">
-                    <img src="images/services/service-grihpravesh.webp" alt="गृहप्रवेश" class="w-full h-48 object-cover">
-                    <div class="service-card-content">
-                        <h3 class="service-title" data-i18n="services-houseWarming-title">गृहप्रवेश</h3>
-                        <p class="service-description" data-i18n="services-houseWarming-description">वास्तु पूजा और घर आशीर्वाद समारोह</p>
-                        <div class="service-actions">
-                            <button type="button" class="btn btn-primary read-more-btn" data-service="house-warming">और पढ़ें</button>
-                            <button type="button" class="btn btn-secondary contact-btn">संपर्क करें</button>
-                        </div>
+                    <div class="service-icon">🏠</div>
+                    <h3 class="service-title" data-i18n="services.houseWarming.title">House Warming</h3>
+                    <p class="service-description" data-i18n="services.houseWarming.description">
+                        Vastu puja and house blessing ceremonies
+                    </p>
+                    <p class="service-short-desc" data-i18n="services.houseWarming.shortDesc">
+                        Peace and positive energy at home
+                    </p>
+                    <div class="service-actions">
+                        <button class="btn btn-primary read-more-btn" data-service="house-warming">
+                            <span data-i18n="buttons.readMore">Read More</span>
+                        </button>
+                        <button class="btn btn-secondary contact-btn">
+                            <span data-i18n="buttons.contact">Contact</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -211,76 +236,115 @@
     </section>
 
     <!-- Vedic Rituals Section -->
-    <section class="rituals-section">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-amber-800 mb-12" data-i18n="rituals-title">वैदिक अनुष्ठान एवं उनका महत्व</h2>
+    <section class="rituals-section py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-800 text-center mb-12" data-i18n="rituals.title">
+                Vedic Rituals & Their Significance
+            </h2>
             
-            <div class="rituals-content">
+            <div class="rituals-grid">
                 <div class="ritual-category">
-                    <h3 data-i18n="rituals-majorDeity-title">१. प्रमुख देवता पूजा एवं त्योहार</h3>
-                    <p data-i18n="rituals-majorDeity-description">ये पूजाएं विशिष्ट देवी-देवताओं को समर्पित हैं और अक्सर प्रमुख त्योहारों के दौरान की जाती हैं। इनका उद्देश्य दैवीय आशीर्वाद प्राप्त करना, कृतज्ञता व्यक्त करना और जीवन में शुभता का आह्वान करना है।</p>
+                    <h3 class="ritual-title" data-i18n="rituals.majorDeity.title">1. Major Deity Worship & Festivals</h3>
+                    <p class="ritual-description" data-i18n="rituals.majorDeity.description">
+                        These worships are dedicated to specific deities and are often performed during major festivals. Their purpose is to receive divine blessings, express gratitude, and invoke auspiciousness in life.
+                    </p>
                 </div>
-
+                
                 <div class="ritual-category">
-                    <h3 data-i18n="rituals-yajna-title">२. यज्ञ एवं हवन (अग्नि अनुष्ठान)</h3>
-                    <p data-i18n="rituals-yajna-description">यज्ञ या हवन वैदिक परंपरा के केंद्र में हैं, जहां अग्नि को देवताओं का मुख माना जाता है और इसके माध्यम से आहुति दी जाती है। उद्देश्य देवताओं को प्रसन्न करना, वातावरण को शुद्ध करना और ब्रह्मांडीय व्यवस्था को बनाए रखना है।</p>
+                    <h3 class="ritual-title" data-i18n="rituals.yajna.title">2. Yajna & Havan (Fire Rituals)</h3>
+                    <p class="ritual-description" data-i18n="rituals.yajna.description">
+                        Yajna or Havan are central to Vedic tradition, where fire is considered the mouth of the deities and offerings are made through it. The purpose is to please the deities, purify the environment and maintain cosmic order.
+                    </p>
                 </div>
-
+                
                 <div class="ritual-category">
-                    <h3 data-i18n="rituals-sanskaras-title">३. सोलह संस्कार (जीवन चक्र अनुष्ठान)</h3>
-                    <p data-i18n="rituals-sanskaras-description">ये सोलह अनुष्ठान हैं जो व्यक्ति के जीवन में महत्वपूर्ण मील के पत्थरों पर किए जाते हैं, जन्म से पूर्व से लेकर मृत्यु के बाद तक। इनका उद्देश्य व्यक्ति को शारीरिक, मानसिक और आध्यात्मिक रूप से परिष्कृत करना है।</p>
+                    <h3 class="ritual-title" data-i18n="rituals.sanskaras.title">3. Sixteen Sanskaras (Life-cycle Rituals)</h3>
+                    <p class="ritual-description" data-i18n="rituals.sanskaras.description">
+                        These are sixteen rituals performed at important milestones in a person's life, from before birth to after death. Their purpose is to refine a person physically, mentally and spiritually.
+                    </p>
                 </div>
-
+                
                 <div class="ritual-category">
-                    <h3 data-i18n="rituals-astrological-title">४. ज्योतिषीय अनुष्ठान (उपचार पूजा)</h3>
-                    <p data-i18n="rituals-astrological-description">वैदिक ज्योतिष के अनुसार, ग्रहों की स्थिति व्यक्ति के जीवन को प्रभावित करती है। ज्योतिषीय अनुष्ठान ग्रहों के प्रतिकूल प्रभावों को शांत करने और उनके शुभ प्रभावों को बढ़ाने के लिए किए जाते हैं।</p>
+                    <h3 class="ritual-title" data-i18n="rituals.astrological.title">4. Astrological Rituals (Remedial Worship)</h3>
+                    <p class="ritual-description" data-i18n="rituals.astrological.description">
+                        According to Vedic astrology, planetary positions affect a person's life. Astrological rituals are performed to pacify adverse planetary influences and enhance their beneficial effects.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section - Moved to Bottom -->
-    <section class="contact-section" id="contact">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-amber-800 mb-8" data-i18n="contact-section-title">संपर्क करें</h2>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-800 text-center mb-12" data-i18n="contact.section-title">
+                Contact Us
+            </h2>
             
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-icon">📱</div>
-                    <h3 class="contact-title" data-i18n="contact-mobile-title">मोबाइल</h3>
-                    <p class="contact-detail">+91 9343775709</p>
-                    <a href="tel:+919343775709" class="contact-link">कॉल करें</a>
+                    <h3 class="contact-title" data-i18n="contact.mobile-title">Mobile</h3>
+                    <p class="contact-detail" data-i18n="contact.mobile">Mobile</p>
+                    <a href="tel:+91-XXXXXXXXXX" class="contact-link">
+                        <span data-i18n="buttons.callNow">Call Now</span>
+                    </a>
                 </div>
                 
                 <div class="contact-card">
                     <div class="contact-icon">💬</div>
-                    <h3 class="contact-title" data-i18n="contact-whatsapp-title">व्हाट्सएप</h3>
-                    <p class="contact-detail">+91 8766453937</p>
-                    <a href="https://wa.me/918766453937" target="_blank" class="contact-link">मैसेज करें</a>
+                    <h3 class="contact-title" data-i18n="contact.whatsapp-title">WhatsApp</h3>
+                    <p class="contact-detail" data-i18n="contact.whatsapp">WhatsApp/Call</p>
+                    <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="contact-link">
+                        <span data-i18n="buttons.contact">Contact</span>
+                    </a>
                 </div>
                 
                 <div class="contact-card">
                     <div class="contact-icon">📍</div>
-                    <h3 class="contact-title" data-i18n="contact-address-title">पता</h3>
-                    <p class="contact-detail">#18, First Main Road, Opp. Anjanadri Hollow Bricks,<br>Goreguntapalya, Bangalore - 560022</p>
+                    <h3 class="contact-title" data-i18n="contact.address-title">Address</h3>
+                    <p class="contact-detail" data-i18n="contact.addressDetail">Shri Jyotish & Karmakand Center, Main Market, City</p>
+                    <p class="contact-detail" data-i18n="contact.landmark">Landmark</p>
                 </div>
                 
                 <div class="contact-card">
-                    <div class="contact-icon">🕒</div>
-                    <h3 class="contact-title" data-i18n="contact-timing-title">कार्य समय</h3>
-                    <p class="contact-detail">सुबह 6:00 बजे - शाम 8:00 बजे<br>सभी दिन उपलब्ध</p>
+                    <div class="contact-icon">🕐</div>
+                    <h3 class="contact-title" data-i18n="contact.timing-title">Working Hours</h3>
+                    <p class="contact-detail" data-i18n="contact.workingHours">6:00 AM to 8:00 PM</p>
+                    <p class="contact-detail">Daily</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container mx-auto px-4 text-center">
-            <p data-i18n="footer-copyright">© २०२४ श्री ज्योतिष एवं कर्मकांड. सर्वाधिकार सुरक्षित।</p>
+    <!-- Footer -->
+    <footer class="footer bg-amber-900 text-white py-8 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-lg mb-4" data-i18n="footer.copyright">
+                © 2024 Shri Jyotish & Karmakand. All rights reserved.
+            </p>
+            <p class="text-sm text-amber-200" data-i18n="footer.address">
+                Shri Jyotish & Karmakand Center, Main Market, City
+            </p>
+            <p class="text-sm text-amber-200" data-i18n="footer.phone">
+                Phone: +91-XXXXXXXXXX
+            </p>
+            <p class="text-sm text-amber-200" data-i18n="footer.email">
+                Email: info@example.com
+            </p>
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
+    <!-- Service Details Container -->
+    <div id="serviceDetailsContainer" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div id="serviceDetailsContent" class="p-8">
+                <!-- Service details will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="js/i18n.js"></script>
     <script src="js/services.js"></script>
     <script src="js/app.js"></script>
