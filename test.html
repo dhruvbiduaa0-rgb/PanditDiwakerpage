@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Vedic Services i18n System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-amber-50 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-amber-800 mb-8 text-center">Vedic Services i18n System Test</h1>
+        
+        <!-- Language Toggle Test -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-xl font-semibold mb-4">Language Toggle Test</h2>
+            <div class="flex gap-4">
+                <button id="testHindiBtn" class="btn btn-primary">हिंदी</button>
+                <button id="testEnglishBtn" class="btn btn-secondary">English</button>
+            </div>
+            <p class="mt-4 text-sm text-gray-600">Current Language: <span id="currentLang">हिंदी</span></p>
+        </div>
+
+        <!-- Service Data Test -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-xl font-semibold mb-4">Service Data Test</h2>
+            <div id="serviceData" class="space-y-4">
+                <!-- Service data will be populated here -->
+            </div>
+        </div>
+
+        <!-- i18n Translation Test -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-xl font-semibold mb-4">i18n Translation Test</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800">Header</h3>
+                    <p data-i18n="header-title">॥ श्री गणेशाय नमः ॥</p>
+                    <p data-i18n="header-subtitle">सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ॥</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800">Main Content</h3>
+                    <p data-i18n="main-title">वैदिक ज्योतिष एवं कर्मकांड सेवाएं</p>
+                    <p data-i18n="main-subtitle">वैदिक अनुष्ठान एवं ज्योतिष सेवाएं</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Details Test -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Service Details Test</h2>
+            <button id="testServiceBtn" class="btn btn-primary mb-4">Show Ganesh Puja Details</button>
+            <div id="serviceDetails" class="hidden">
+                <!-- Service details will be shown here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/i18n.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        // Test script
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Test page loaded');
+            
+            // Test language toggle
+            document.getElementById('testHindiBtn').addEventListener('click', function() {
+                if (typeof i18n !== 'undefined') {
+                    i18n.setLanguage('hindi');
+                    document.getElementById('currentLang').textContent = 'हिंदी';
+                }
+            });
+            
+            document.getElementById('testEnglishBtn').addEventListener('click', function() {
+                if (typeof i18n !== 'undefined') {
+                    i18n.setLanguage('english');
+                    document.getElementById('currentLang').textContent = 'English';
+                }
+            });
+
+            // Test service data
+            if (typeof servicesData !== 'undefined') {
+                const serviceDataDiv = document.getElementById('serviceData');
+                Object.keys(servicesData).forEach(serviceKey => {
+                    const service = servicesData[serviceKey];
+                    const serviceDiv = document.createElement('div');
+                    serviceDiv.className = 'border-l-4 border-amber-500 pl-4';
+                    serviceDiv.innerHTML = `
+                        <h3 class="font-semibold">${service.title.hindi}</h3>
+                        <p class="text-sm text-gray-600">${service.description.hindi}</p>
+                    `;
+                    serviceDataDiv.appendChild(serviceDiv);
+                });
+            }
+
+            // Test service details
+            document.getElementById('testServiceBtn').addEventListener('click', function() {
+                if (typeof servicesData !== 'undefined' && typeof vedicApp !== 'undefined') {
+                    vedicApp.showServiceDetails('ganeshPuja');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
