@@ -49,7 +49,8 @@
         .language-btn{background:transparent;border:none;padding:8px 16px;border-radius:8px;font-weight:500;cursor:pointer;transition:var(--transition);color:var(--text-secondary)}
         .language-btn:hover{background:var(--bg-secondary);color:var(--primary-color)}
         .language-btn.active{background:var(--primary-color);color:white;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1)}
-        .hero-header{background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 50%,#d97706 100%);background-attachment:fixed;position:relative;overflow:hidden}
+        .hero-header{background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 50%,#d97706 100%);background-attachment:fixed;position:relative;overflow:hidden;background-size:200% 200%;animation:spiritual-gradient 8s ease-in-out infinite}
+        @keyframes spiritual-gradient{0%,100%{background-position:0% 50%}25%{background-position:100% 50%}50%{background-position:100% 100%}75%{background-position:0% 100%}}
     </style>
     
     <!-- Non-critical CSS loaded asynchronously -->
@@ -125,14 +126,13 @@
     </script>
 </head>
 <body class="bg-gradient-to-br from-amber-50 to-orange-100 min-h-screen">
-    <!-- Language Toggle -->
-    <div class="fixed top-4 right-4 z-50">
-        <div class="bg-white rounded-lg shadow-lg p-2 flex space-x-2">
-            <button id="englishBtn" class="language-btn active px-3 py-1 rounded-md text-sm font-medium transition-all duration-300">
-                English
-            </button>
-            <button id="hindiBtn" class="language-btn px-3 py-1 rounded-md text-sm font-medium transition-all duration-300">
-                हिंदी
+    <!-- Spiritual Language Toggle -->
+    <div class="fixed top-6 right-6 z-50">
+        <div class="spiritual-language-toggle">
+            <button class="spiritual-toggle-btn" id="languageToggle" aria-label="Switch Language">
+                <span class="lang-indicator active" data-lang="english">EN</span>
+                <span class="lang-indicator" data-lang="hindi">हिं</span>
+                <div class="toggle-slider english-active"></div>
             </button>
         </div>
     </div>
@@ -1067,7 +1067,7 @@
             
             <div class="contact-grid">
                 <div class="contact-card">
-                    <div class="contact-icon">📱</div>
+                    <div class="contact-icon-spiritual call-icon"></div>
                     <h3 class="contact-title" data-i18n="contact.mobile-title">Mobile</h3>
                     <p class="contact-detail">Book Pandit Services</p>
                     <a href="tel:+91-XXXXXXXXXX" class="contact-link">
@@ -1076,7 +1076,7 @@
                 </div>
                 
                 <div class="contact-card">
-                    <div class="contact-icon">💬</div>
+                    <div class="contact-icon-spiritual whatsapp-icon"></div>
                     <h3 class="contact-title" data-i18n="contact.whatsapp-title">WhatsApp</h3>
                     <p class="contact-detail">Online Pandit Booking</p>
                     <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to book Pandit services in Bangalore" target="_blank" class="contact-link">
@@ -1085,14 +1085,14 @@
                 </div>
                 
                 <div class="contact-card">
-                    <div class="contact-icon">📍</div>
+                    <div class="contact-icon-spiritual location-icon"></div>
                     <h3 class="contact-title" data-i18n="contact.address-title">Service Areas</h3>
                     <p class="contact-detail">All areas in Bangalore</p>
                     <p class="contact-detail">Whitefield, Koramangala, HSR Layout, Marathahalli, Electronic City, Indiranagar & more</p>
                 </div>
                 
                 <div class="contact-card">
-                    <div class="contact-icon">🕐</div>
+                    <div class="contact-icon-spiritual time-icon"></div>
                     <h3 class="contact-title" data-i18n="contact.timing-title">Working Hours</h3>
                     <p class="contact-detail" data-i18n="contact.workingHours">6:00 AM to 8:00 PM</p>
                     <p class="contact-detail">Available 7 days a week</p>
@@ -1104,17 +1104,17 @@
                 <h3 class="text-2xl font-bold text-amber-800 mb-4">Why Choose Our Pandit Services?</h3>
                 <div class="grid md:grid-cols-3 gap-6 text-center">
                     <div>
-                        <div class="text-3xl mb-2">✓</div>
+                        <div class="spiritual-check-icon mb-2"></div>
                         <h4 class="font-semibold text-amber-700 mb-2">25+ Years Experience</h4>
                         <p class="text-gray-600">Experienced Hindi Pandit with deep knowledge of Vedic rituals</p>
                     </div>
                     <div>
-                        <div class="text-3xl mb-2">✓</div>
+                        <div class="spiritual-check-icon mb-2"></div>
                         <h4 class="font-semibold text-amber-700 mb-2">Authentic Rituals</h4>
                         <p class="text-gray-600">All ceremonies performed according to traditional Vedic methods</p>
                     </div>
                     <div>
-                        <div class="text-3xl mb-2">✓</div>
+                        <div class="spiritual-check-icon mb-2"></div>
                         <h4 class="font-semibold text-amber-700 mb-2">Affordable Pricing</h4>
                         <p class="text-gray-600">Competitive rates for all pandit services in Bangalore</p>
                     </div>

@@ -20,26 +20,11 @@ class VedicRitualsApp {
     }
 
     setupEventListeners() {
-        // Language toggle buttons
-        const hindiBtn = document.getElementById('hindiBtn');
-        const englishBtn = document.getElementById('englishBtn');
-
-        if (hindiBtn) {
-            hindiBtn.addEventListener('click', () => {
-                this.setLanguage('hindi');
-                this.updateLanguageButtons();
-            });
-        }
-
-        if (englishBtn) {
-            englishBtn.addEventListener('click', () => {
-                this.setLanguage('english');
-                this.updateLanguageButtons();
-            });
-        }
-
-        // Initialize language buttons
-        this.updateLanguageButtons();
+        // Listen for language changes
+        window.addEventListener('languageChange', (e) => {
+            this.currentLanguage = e.detail.language;
+            this.updateServiceDetails();
+        });
 
         // Service buttons
         this.setupReadMoreButtons();
@@ -49,13 +34,18 @@ class VedicRitualsApp {
         this.setupModalClose();
     }
 
-    updateLanguageButtons() {
-        const hindiBtn = document.getElementById('hindiBtn');
-        const englishBtn = document.getElementById('englishBtn');
-
-        if (hindiBtn && englishBtn) {
-            hindiBtn.classList.toggle('active', this.currentLanguage === 'hindi');
-            englishBtn.classList.toggle('active', this.currentLanguage === 'english');
+    updateServiceDetails() {
+        // Re-render service details if a service is currently being viewed
+        if (this.currentService) {
+            const serviceData = servicesData[this.currentService];
+            if (serviceData) {
+                const serviceDetailsContent = document.getElementById('serviceDetailsContent');
+                if (serviceDetailsContent) {
+                    const detailsHTML = this.createServiceDetailsPage(serviceData);
+                    serviceDetailsContent.innerHTML = detailsHTML;
+                    this.setupBackButton();
+                }
+            }
         }
     }
 
@@ -211,9 +201,28 @@ class VedicRitualsApp {
                     </div>
                 ` : ''}
 
+                ${service.spiritualSignificance ? `
+                    <h2>${isHindi ? 'आध्यात्मिक महत्व' : 'Spiritual Significance'}</h2>
+                    <p>${service.spiritualSignificance[lang]}</p>
+                ` : ''}
+
+                ${service.specialFeatures ? `
+                    <h2>${isHindi ? 'विशेष विशेषताएं' : 'Special Features'}</h2>
+                    <ul class="special-features-list">
+                        ${service.specialFeatures[lang].map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                ` : ''}
+
+                ${service.preparationRequired ? `
+                    <h2>${isHindi ? 'पूजा की तैयारी' : 'Preparation Required'}</h2>
+                    <ul class="preparation-list">
+                        ${service.preparationRequired[lang].map(prep => `<li>${prep}</li>`).join('')}
+                    </ul>
+                ` : ''}
+
                 ${service.procedure ? `
-                    <h2>${isHindi ? 'पूजा विधि' : 'Procedure'}</h2>
-                    <ol>
+                    <h2>${isHindi ? 'पूजा विधि (चरणबद्ध प्रक्रिया)' : 'Detailed Procedure (Step-by-Step)'}</h2>
+                    <ol class="procedure-steps">
                         ${service.procedure[lang].map(step => `<li>${step}</li>`).join('')}
                     </ol>
                 ` : ''}
@@ -242,6 +251,13 @@ class VedicRitualsApp {
                 ${service.scientificBasis ? `
                     <h2>${isHindi ? 'वैज्ञानिक आधार' : 'Scientific Basis'}</h2>
                     <p>${service.scientificBasis[lang]}</p>
+                ` : ''}
+
+                ${service.postPujaGuidance ? `
+                    <h2>${isHindi ? 'पूजा के बाद मार्गदर्शन' : 'Post-Puja Guidance'}</h2>
+                    <ul class="post-puja-guidance">
+                        ${service.postPujaGuidance[lang].map(guidance => `<li>${guidance}</li>`).join('')}
+                    </ul>
                 ` : ''}
 
                 <div class="text-center" style="margin-top: 40px; padding: 20px; background: var(--bg-primary); border-radius: var(--border-radius);">
@@ -298,25 +314,7 @@ class VedicRitualsApp {
         }
     }
 
-    setLanguage(language) {
-        if (language === 'hindi' || language === 'english') {
-            this.currentLanguage = language;
-            i18n.setLanguage(language);
-            
-            // Re-render service details if a service is currently being viewed
-            if (this.currentService) {
-                const serviceData = servicesData[this.currentService];
-                if (serviceData) {
-                    const serviceDetailsContent = document.getElementById('serviceDetailsContent');
-                    if (serviceDetailsContent) {
-                        const detailsHTML = this.createServiceDetailsPage(serviceData);
-                        serviceDetailsContent.innerHTML = detailsHTML;
-                        this.setupBackButton();
-                    }
-                }
-            }
-        }
-    }
+
 
     addScrollAnimations() {
         // Use passive listeners and optimize for performance

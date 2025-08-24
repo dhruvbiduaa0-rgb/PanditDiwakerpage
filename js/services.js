@@ -27,8 +27,28 @@ const servicesData = {
             english: 'Physical Benefits: Improved health, freedom from diseases, gain of strength. Mental Benefits: Increased concentration, intelligence, memory. Spiritual Benefits: Self-confidence, inner peace, spiritual progress.'
         },
         procedure: {
-            hindi: 'गणेश पूजा में मंगल कलश स्थापना, गणेश आवाहन, षोडशोपचार पूजा, मोदक नैवेद्य, आरती और विसर्जन शामिल है।',
-            english: 'Ganesh Puja includes Mangal Kalash establishment, Ganesh invocation, Shodashopachara puja, Modak offering, Aarti and Visarjan.'
+            hindi: [
+                '1. स्वच्छता और तैयारी: पूजा स्थल की शुद्धता और गंगाजल से शुद्धीकरण',
+                '2. कलश स्थापना: मंगल कलश स्थापना और प्राण प्रतिष्ठा',
+                '3. गणेश आवाहन: "गणपति बप्पा मोरया" के उद्घोष के साथ गणेश जी का आह्वान',
+                '4. षोडशोपचार पूजा: 16 प्रकार की उपचारों से पूजा (आसन, पाद्य, अर्घ्य, आचमन, स्नान, वस्त्र, उपवीत, गंध, पुष्प, धूप, दीप, नैवेद्य, आचमन, ताम्बूल, दक्षिणा, आरती)',
+                '5. मंत्र जाप: "ओम गं गणपतये नमः" का 108 बार जाप',
+                '6. मोदक भोग: भगवान गणेश के प्रिय मोदक का भोग',
+                '7. आरती: गणेश आरती के साथ दीप प्रदीप्त करना',
+                '8. प्रसाद वितरण: सभी श्रद्धालुओं में प्रसाद वितरण',
+                '9. विसर्जन (वैकल्पिक): यदि मूर्ति की स्थापना की गई हो तो उचित विसर्जन'
+            ],
+            english: [
+                '1. Cleanliness & Preparation: Purification of worship area with Ganga water',
+                '2. Kalash Installation: Sacred pot establishment with prana pratishtha',
+                '3. Ganesh Invocation: Calling Lord Ganesha with "Ganpati Bappa Morya" chants',
+                '4. Shodashopachara Puja: 16 types of offerings (asana, padya, arghya, achamana, snana, vastra, upavita, gandha, pushpa, dhupa, dipa, naivedya, achamana, tambula, dakshina, aarti)',
+                '5. Mantra Chanting: 108 repetitions of "Om Gam Ganapataye Namaha"',
+                '6. Modak Offering: Offering the favorite sweet modak to Lord Ganesha',
+                '7. Aarti: Lighting of lamps with Ganesha aarti',
+                '8. Prasad Distribution: Distribution of blessed food to all devotees',
+                '9. Visarjan (Optional): Proper immersion if an idol has been installed'
+            ]
         },
         duration: {
             hindi: '2-3 घंटे',
@@ -53,6 +73,60 @@ const servicesData = {
         scientificBasis: {
             hindi: 'गणेश पूजा से मस्तिष्क में सकारात्मक ऊर्जा का प्रवाह होता है, जो तनाव कम करने और मानसिक स्पष्टता बढ़ाने में सहायक है।',
             english: 'Ganesh Puja creates positive energy flow in the brain, which helps reduce stress and increase mental clarity.'
+        },
+        specialFeatures: {
+            hindi: [
+                'प्राणप्रतिष्ठित गणेश मूर्ति की स्थापना',
+                'प्रामाणिक वैदिक मंत्रों का उच्चारण',
+                'विशेष गणेश स्तोत्र और चालीसा पाठ',
+                'मोदक और लड्डू का विशेष प्रसाद',
+                '21 या 108 दुर्वा दल अर्पण',
+                'पारंपरिक गणेश आरती'
+            ],
+            english: [
+                'Installation of consecrated Ganesha idol',
+                'Authentic Vedic mantra recitation',
+                'Special Ganesha stotra and chalisa reading',
+                'Special prasadam of modak and laddu',
+                'Offering of 21 or 108 durva grass blades',
+                'Traditional Ganesha aarti'
+            ]
+        },
+        spiritualSignificance: {
+            hindi: 'गणेश जी को "विघ्नहर्ता" कहा जाता है क्योंकि वे सभी बाधाओं का नाश करते हैं। वे बुद्धि और विवेक के स्वामी हैं। उनकी उपासना से व्यक्ति के जीवन में सकारात्मक परिवर्तन आता है और आध्यात्मिक उन्नति होती है।',
+            english: 'Lord Ganesha is called "Vighnaharta" as he removes all obstacles. He is the lord of wisdom and intelligence. His worship brings positive transformation in life and spiritual advancement.'
+        },
+        preparationRequired: {
+            hindi: [
+                'पूजा से एक दिन पहले व्रत रखना (वैकल्पिक)',
+                'पूजा स्थल की सफाई और सजावट',
+                'आवश्यक पूजा सामग्री की व्यवस्था',
+                'मन की शुद्धता और सकारात्मक भावना',
+                'पूजा के लिए उपयुक्त वस्त्र धारण'
+            ],
+            english: [
+                'Optional fasting one day before puja',
+                'Cleaning and decoration of worship area',
+                'Arrangement of required puja materials',
+                'Mental purity and positive mindset',
+                'Wearing appropriate attire for worship'
+            ]
+        },
+        postPujaGuidance: {
+            hindi: [
+                'प्रसाद का सेवन पवित्र भाव से करें',
+                'गणेश मंत्र का नियमित जाप करते रहें',
+                'सद्कर्मों में लगे रहें',
+                'दान-पुण्य का कार्य करें',
+                'गणेश चतुर्थी का व्रत रखें'
+            ],
+            english: [
+                'Consume prasadam with devotion',
+                'Continue regular chanting of Ganesha mantras',
+                'Engage in good deeds',
+                'Perform charitable activities',
+                'Observe Ganesha Chaturthi fast'
+            ]
         }
     },
 

@@ -29,8 +29,25 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(217, 119, 6, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
     overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
 }
 
 body.lang-hindi {
@@ -41,48 +58,321 @@ body.lang-english {
     font-family: 'Inter', sans-serif;
 }
 
-/* Language Toggle Styles */
-.language-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 100;
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-medium);
-    padding: 8px;
-    display: flex;
-    gap: 8px;
+/* Spiritual Language Toggle Styles */
+.spiritual-language-toggle {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50px;
+    padding: 4px;
+    box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
+    border: 1px solid rgba(251, 191, 36, 0.2);
 }
 
-.language-btn {
+.spiritual-toggle-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
     background: transparent;
     border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 500;
+    border-radius: 50px;
+    padding: 0;
     cursor: pointer;
-    transition: var(--transition);
+    overflow: hidden;
+    width: 80px;
+    height: 40px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lang-indicator {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 32px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     color: var(--text-secondary);
+    border-radius: 50px;
 }
 
-.language-btn:hover {
-    background: var(--bg-secondary);
-    color: var(--primary-color);
-}
-
-.language-btn.active {
-    background: var(--primary-color);
+.lang-indicator.active {
     color: white;
-    box-shadow: var(--shadow-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Hero Header Styles */
+.toggle-slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 36px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.3);
+}
+
+.toggle-slider.hindi-active {
+    transform: translateX(36px);
+}
+
+.spiritual-toggle-btn:hover {
+    transform: scale(1.05);
+}
+
+.spiritual-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.lang-indicator[data-lang="hindi"] {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 11px;
+}
+
+/* Spiritual animations */
+@keyframes spiritual-glow {
+    0%, 100% { box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15); }
+    50% { box-shadow: 0 8px 32px rgba(251, 191, 36, 0.25); }
+}
+
+.spiritual-language-toggle:hover {
+    animation: spiritual-glow 2s ease-in-out infinite;
+}
+
+/* Spiritual Icons */
+.contact-icon-spiritual {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-icon-spiritual::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(0) invert(1);
+}
+
+.call-icon::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z'/%3E%3C/svg%3E");
+}
+
+.whatsapp-icon::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'/%3E%3C/svg%3E");
+}
+
+.location-icon::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 11a3 3 0 11-6 0 3 3 0 016 0z'/%3E%3C/svg%3E");
+}
+
+.time-icon::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'/%3E%3C/svg%3E");
+}
+
+.spiritual-check-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    position: relative;
+    animation: spiritual-pulse 2s ease-in-out infinite;
+}
+
+.spiritual-check-icon::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@keyframes spiritual-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
+}
+
+.contact-icon-spiritual:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 35px rgba(139, 69, 19, 0.4);
+}
+
+/* Enhanced Service Details Styling */
+.special-features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.special-features-list li {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(251, 191, 36, 0.1) 100%);
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    list-style: none;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+}
+
+.special-features-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15);
+}
+
+.special-features-list li::before {
+    content: '🕉️';
+    position: absolute;
+    left: -2px;
+    top: 15px;
+    font-size: 16px;
+}
+
+.preparation-list {
+    background: rgba(16, 185, 129, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.preparation-list li {
+    margin: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    list-style: none;
+}
+
+.preparation-list li::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.procedure-steps {
+    background: rgba(139, 69, 19, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 25px 0;
+    border: 1px solid rgba(139, 69, 19, 0.2);
+}
+
+.procedure-steps li {
+    margin: 15px 0;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(139, 69, 19, 0.1);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.procedure-steps li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.15);
+}
+
+.post-puja-guidance {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.post-puja-guidance li {
+    margin: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    list-style: none;
+    font-weight: 500;
+}
+
+.post-puja-guidance li::before {
+    content: '🙏';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Spiritual Service Detail Headings */
+.service-details-page h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid rgba(139, 69, 19, 0.2);
+    padding-bottom: 8px;
+    margin: 30px 0 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.service-details-page h2::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+/* Spiritual Animation for Service Details */
+@keyframes spiritual-appear {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.service-details-page > * {
+    animation: spiritual-appear 0.6s ease-out forwards;
+}
+
+.service-details-page > *:nth-child(2) { animation-delay: 0.1s; }
+.service-details-page > *:nth-child(3) { animation-delay: 0.2s; }
+.service-details-page > *:nth-child(4) { animation-delay: 0.3s; }
+.service-details-page > *:nth-child(5) { animation-delay: 0.4s; }
+
+/* Spiritual Hero Header Styles */
 .hero-header {
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
     background-attachment: fixed;
     position: relative;
     overflow: hidden;
+    background-size: 200% 200%;
+    animation: spiritual-gradient 8s ease-in-out infinite;
+}
+
+@keyframes spiritual-gradient {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
 }
 
 .hero-header::before {
@@ -1284,5 +1574,111 @@ body.lang-english {
         opacity: 1;
         transform: none;
         transition: none;
+    }
+    
+    .hero-header {
+        animation: none;
+    }
+    
+    .spiritual-pulse,
+    .spiritual-glow {
+        animation: none;
+    }
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+    .spiritual-language-toggle {
+        top: 4px;
+        right: 4px;
+    }
+    
+    .spiritual-toggle-btn {
+        width: 70px;
+        height: 35px;
+    }
+    
+    .lang-indicator {
+        width: 31px;
+        height: 27px;
+        font-size: 11px;
+    }
+    
+    .toggle-slider {
+        width: 31px;
+        height: 27px;
+    }
+    
+    .toggle-slider.hindi-active {
+        transform: translateX(31px);
+    }
+    
+    .special-features-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .procedure-steps {
+        padding: 15px;
+    }
+    
+    .procedure-steps li {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .service-details-page h2 {
+        font-size: 1.3rem;
+    }
+    
+    .contact-icon-spiritual {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .contact-icon-spiritual::before {
+        width: 20px;
+        height: 20px;
+        background-size: 20px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .spiritual-language-toggle {
+        top: 2px;
+        right: 2px;
+    }
+    
+    .spiritual-toggle-btn {
+        width: 65px;
+        height: 32px;
+    }
+    
+    .lang-indicator {
+        width: 28px;
+        height: 24px;
+        font-size: 10px;
+    }
+    
+    .toggle-slider {
+        width: 28px;
+        height: 24px;
+    }
+    
+    .toggle-slider.hindi-active {
+        transform: translateX(28px);
+    }
+    
+    .procedure-steps li {
+        font-size: 13px;
+    }
+    
+    .service-details-page {
+        padding: 15px;
+    }
+    
+    .preparation-list,
+    .post-puja-guidance {
+        padding: 15px;
     }
 }

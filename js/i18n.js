@@ -1,7 +1,8 @@
-// Internationalization (i18n) System - Pure Hindi and English
+// Enhanced Internationalization (i18n) System - Pure Hindi and English
 class I18n {
     constructor() {
         this.currentLanguage = 'english';
+        this.initialized = false;
         this.hindiTranslations = {
             // Header Section
             'header.title': '॥ श्री गणेशाय नमः ॥',
@@ -206,11 +207,16 @@ class I18n {
     }
 
     init() {
+        if (this.initialized) return;
+        
         const savedLanguage = localStorage.getItem('language');
         if (savedLanguage && (savedLanguage === 'hindi' || savedLanguage === 'english')) {
             this.currentLanguage = savedLanguage;
         }
+        
+        this.initialized = true;
         this.updateLanguage();
+        this.setupLanguageToggle();
     }
 
     getTranslation(key) {
@@ -241,6 +247,37 @@ class I18n {
             this.currentLanguage = language;
             localStorage.setItem('language', language);
             this.updateLanguage();
+            this.updateLanguageToggle();
+            
+            // Trigger custom event for other components
+            window.dispatchEvent(new CustomEvent('languageChange', { 
+                detail: { language: this.currentLanguage } 
+            }));
+        }
+    }
+
+    toggleLanguage() {
+        const newLanguage = this.currentLanguage === 'hindi' ? 'english' : 'hindi';
+        this.setLanguage(newLanguage);
+    }
+
+    setupLanguageToggle() {
+        const toggleBtn = document.getElementById('languageToggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => this.toggleLanguage());
+            this.updateLanguageToggle();
+        }
+    }
+
+    updateLanguageToggle() {
+        const toggleBtn = document.getElementById('languageToggle');
+        if (toggleBtn) {
+            const isHindi = this.currentLanguage === 'hindi';
+            toggleBtn.innerHTML = `
+                <span class="lang-indicator ${isHindi ? 'active' : ''}" data-lang="hindi">हिं</span>
+                <span class="lang-indicator ${!isHindi ? 'active' : ''}" data-lang="english">EN</span>
+                <div class="toggle-slider ${isHindi ? 'hindi-active' : 'english-active'}"></div>
+            `;
         }
     }
 
