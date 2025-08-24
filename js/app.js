@@ -101,47 +101,38 @@ class VedicRitualsApp {
     }
 
     setupImageErrorHandling() {
-        // Handle image loading errors for service images
-        const serviceImages = document.querySelectorAll('.service-card img, .service-overview-card img, .muhurat-service-card img');
-        
-        serviceImages.forEach(img => {
-            img.addEventListener('error', (e) => {
-                console.warn('Image failed to load:', img.src);
-                // Create a fallback placeholder
-                const fallbackDiv = document.createElement('div');
-                fallbackDiv.className = 'image-fallback';
-                fallbackDiv.innerHTML = `
-                    <div class="fallback-icon">🕉️</div>
-                    <div class="fallback-text">Service Image</div>
-                `;
-                fallbackDiv.style.cssText = `
-                    width: 100%;
-                    height: 200px;
-                    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-                    border: 1px solid #e5e7eb;
-                    border-radius: 8px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    color: #9ca3af;
-                    font-size: 0.9rem;
-                `;
-                
-                // Replace the broken image with fallback
-                img.style.display = 'none';
-                img.parentNode.insertBefore(fallbackDiv, img);
-            });
-
-            // Add loading state
-            img.addEventListener('loadstart', () => {
-                img.style.opacity = '0.7';
-            });
-
-            img.addEventListener('load', () => {
-                img.style.opacity = '1';
+        // Optimized image error handling with lazy initialization
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    this.setupImageHandlers(img);
+                    observer.unobserve(img);
+                }
             });
         });
+
+        // Only observe images that need error handling
+        const serviceImages = document.querySelectorAll('.service-card img, .service-overview-card img, .muhurat-service-card img');
+        serviceImages.forEach(img => observer.observe(img));
+    }
+
+    setupImageHandlers(img) {
+        img.addEventListener('error', () => {
+            // Lightweight fallback without complex DOM manipulation
+            img.style.display = 'none';
+            if (!img.nextElementSibling?.classList.contains('image-fallback')) {
+                const fallback = document.createElement('div');
+                fallback.className = 'image-fallback';
+                fallback.innerHTML = '🕉️';
+                fallback.style.cssText = 'width:100%;height:200px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;border-radius:8px;font-size:2rem;';
+                img.parentNode.insertBefore(fallback, img.nextSibling);
+            }
+        }, { once: true });
+
+        img.addEventListener('load', () => {
+            img.style.opacity = '1';
+        }, { once: true });
     }
 
     showServiceDetails(serviceId) {
@@ -328,6 +319,7 @@ class VedicRitualsApp {
     }
 
     addScrollAnimations() {
+        // Use passive listeners and optimize for performance
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -336,20 +328,21 @@ class VedicRitualsApp {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    // Use CSS classes instead of direct style manipulation for better performance
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
                 }
             });
         }, observerOptions);
 
-        // Observe elements for scroll animations
-        const animatedElements = document.querySelectorAll('.service-card, .service-overview-card, .ritual-category, .contact-card, .expertise-item, .muhurat-service-card');
-        
-        animatedElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+        // Batch DOM queries and operations
+        requestAnimationFrame(() => {
+            const animatedElements = document.querySelectorAll('.service-card, .service-overview-card, .ritual-category, .contact-card, .expertise-item, .muhurat-service-card');
+            
+            animatedElements.forEach(el => {
+                el.classList.add('animate-prepared');
+                observer.observe(el);
+            });
         });
     }
 
